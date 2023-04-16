@@ -39,7 +39,6 @@ namespace VGF.SceneSystem
 
         private IEnumerator LoadSceneSetActive(string name)
         {
-            Player.instance.Mute = true;
             for (int i = 0; i < SceneManager.sceneCount; i++)
             {
                 Scene scene = SceneManager.GetSceneAt(i);
@@ -82,7 +81,6 @@ namespace VGF.SceneSystem
 
             AfterSceneLoaded?.Invoke();
             AfterSceneLoaded=null;
-            Player.instance.Mute = false;
             yield break;
         }
 

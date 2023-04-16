@@ -22,7 +22,6 @@ namespace VGF
             
             //SceneManager.LoadScene("Persistent Scene", LoadSceneMode.Single);
             InventoryManager.Instance.EmptyItems();
-            Player.instance.Mute = true;
             EventHandler.CallRunChapter(0);
         }
         public static void ResetGameData()
