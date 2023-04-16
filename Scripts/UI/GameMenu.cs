@@ -19,6 +19,7 @@ public class GameMenu : MonoBehaviour
         
     }
 
+    //
     public void OnClickPlay(){
         SceneManager.LoadScene("Persistent Scene",LoadSceneMode.Single);
     }
