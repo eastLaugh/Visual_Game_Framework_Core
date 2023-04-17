@@ -9,20 +9,23 @@ namespace VGF.Plot
 
     public class PlotManager : Singleton<PlotManager>
     {
+        public bool StartRun;
         public int currentIndex { get; private set; } = 0;
         public ChapterBase[] chapters;
 
-        public void Run(int index){
+        public void Run(int index)
+        {
             Debug.Log("<b>Run</b>");
             currentIndex = index;
-            CaptionLoader.instance.Stop();
             chapters[currentIndex].Run();
         }
 
-        private void Start() 
+        private void Start()
         {
             EventHandler.RunChapter += Run;
-            //Run(currentIndex);
+
+            if(StartRun)
+                Run(0);
         }
         protected override void OnDestroy()
         {
@@ -30,32 +33,35 @@ namespace VGF.Plot
             EventHandler.RunChapter -= Run;
         }
 
-        public void NextChapter(){
+        public void NextChapter()
+        {
             currentIndex++;
-            
-            if(currentIndex >=chapters.Length){
+
+            if (currentIndex >= chapters.Length)
+            {
                 Debug.LogError("Game Done!!!  index>=chapters.Length ");
                 End();
                 return;
             }
             Run(currentIndex);
         }
-        
 
-        void End(){
+
+        void End()
+        {
 
             //结束游戏
 
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying=false;
-            #else
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
                 Application.Quit();
-            #endif
-            
+#endif
+
         }
     }
 
-    
 
-    
+
+
 }

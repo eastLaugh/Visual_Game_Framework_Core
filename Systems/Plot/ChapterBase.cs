@@ -106,6 +106,34 @@ namespace VGF.Plot
 
         #region NPC及对话系统
 
+        protected struct CharacterChainOperator{
+            public string name{get;private set;}
+            public GameObject gameObject{get;private set;}
+            
+            Character character;
+            public CharacterChainOperator(string name)
+            {
+                this.name = name;
+                gameObject = GameObject.Find(name);
+                character = gameObject.GetComponent<Character>()??gameObject.AddComponent<Character>();
+            }
+
+            public CharacterChainOperator Interactive(Action action){
+                Interactive interactive = gameObject.GetComponent<Interactive>()??gameObject.AddComponent<Interactive>();
+                interactive.RegisterAction(action);
+                return this;
+            }
+
+            [Obsolete]
+            public CharacterChainOperator Pool(Action action,float rate){
+                Pool pool = gameObject.GetComponent<Pool>()??gameObject.AddComponent<Pool>();
+                return this;
+            }
+        }
+        protected CharacterChainOperator at(string name){
+            return new CharacterChainOperator(name);
+        }
+
 
         [Autowired]
         private static WordZone.WordZone wordZone;

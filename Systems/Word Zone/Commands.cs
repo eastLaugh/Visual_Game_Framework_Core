@@ -34,6 +34,7 @@ namespace WordZone
 
         public static void Shake()
         {
+            Debug.Log("Shake Command Invoked!");
             Camera.current.transform.DOShakePosition(duration, strength, vibrato, randomness);
         }
 
