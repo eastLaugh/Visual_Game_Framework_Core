@@ -8,12 +8,12 @@ namespace VGF.Inventory
 {
     public class ItemBase : MonoBehaviour
     {
-        public UnityEvent OnGet=new UnityEvent();
+        public UnityEvent OnGet = new UnityEvent();
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private GameObject KeyboardTip;
         private Collider coll;
         private ItemDetails itemDetails;
-        private bool approach=false;
+        private bool approach = false;
         public int itemID;
 
         private void Awake()
@@ -28,11 +28,11 @@ namespace VGF.Inventory
         }
         private void Update()
         {
-            if(approach)
-                if(Input.GetKeyDown(KeyCode.E))
+            if (approach)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    bool flag=InventoryManager.Instance.AddItem(itemID,1);
-                    if(flag)
+                    bool flag = InventoryManager.Instance.AddItem(itemID, 1);
+                    if (flag)
                     {
                         gameObject.SetActive(false);
                         OnGet?.Invoke();
@@ -43,14 +43,14 @@ namespace VGF.Inventory
         public void InitItemSprite()
         {
             itemDetails = InventoryManager.Instance.GetItemDetails(itemID);
-            if(itemDetails != null)
+            if (itemDetails != null)
             {
-                spriteRenderer.sprite = itemDetails.itemWorldSprite == null ? itemDetails.itemIcon : itemDetails.itemWorldSprite;            
+                spriteRenderer.sprite = itemDetails.itemWorldSprite == null ? itemDetails.itemIcon : itemDetails.itemWorldSprite;
             }
         }
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.tag=="Player")
+            if (other.gameObject.tag == "Player")
             {
                 approach = true;
                 KeyboardTip.SetActive(true);
