@@ -3,7 +3,7 @@ using System.Collections.Generic;   //同上
 using UnityEngine;
 
 
-//自定义命名空间，用于管理玩家背包中的物品，供其他模块系统引用
+//自定义命名空间，该类用于管理玩家背包中的物品，供其他模块系统引用
 namespace VGF.Inventory
 {
     //继承Singleton<InventoryManager>，便于其他类引用这两个类的内容

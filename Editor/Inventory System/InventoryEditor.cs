@@ -115,7 +115,7 @@ public class InventoryEditor : EditorWindow
     }
 
 
-    // 生成一个UI元素列表视图，其中包括了每个列表项的图标和名称，代码将隐藏右侧的信息面板中
+    // 生成一个UI元素列表视图，其中包括了每个列表项的图标和名称，信息将隐藏右侧的信息面板中
     private void GenerateListView()
     {
         Func<VisualElement> makeItem = () => itemRowTemplate.CloneTree();
