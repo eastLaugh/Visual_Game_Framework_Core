@@ -6,6 +6,7 @@ using System;
 
 namespace VGF.UI
 {
+    [Obsolete]
     public class CaptionLoader : MonoBehaviour
     {
 

@@ -14,11 +14,13 @@ public class Character : MonoBehaviour, ICharacter
 
     public CharacterType Type;
 
-
+    public static Character Player;
     private ICharacter[] characterComponents;
 
     void Awake()
     {
+        if(Type==CharacterType.Player)
+            Player=this;
         this.Bean();
         RegCom();
     }
@@ -60,5 +62,12 @@ public class Character : MonoBehaviour, ICharacter
 
     public void OnPlayerExit()
     {
+    }
+}
+
+
+public static class CharacterExtension{
+    public static Character at(this VGF.Plot.ChapterBase chapter){
+        return null;
     }
 }
