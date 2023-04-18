@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
 
-public class ItemDetails  //记录物品详情
+//序列化物品属性
+[System.Serializable]
+//自定义物品的详细信息
+public class ItemDetails
 {
     public int itemID;
     public string itemName;
@@ -20,8 +22,11 @@ public class ItemDetails  //记录物品详情
     public int sellPrice;
     public int BuyPrice;
 }
+
+
 [System.Serializable]
-public class InventoryItem  //
+//记录某物品在背包中的数量
+public class InventoryItem
 {
     public int itemID;
     public int amount;
