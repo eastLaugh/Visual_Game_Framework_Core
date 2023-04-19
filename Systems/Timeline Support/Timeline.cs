@@ -10,7 +10,6 @@ public class Timeline : MonoBehaviour
     void Start()
     {
         timelines = Resources.LoadAll<TimelineAsset>("").ToDictionary(timeline=>timeline.name);
-
     }
 
 }

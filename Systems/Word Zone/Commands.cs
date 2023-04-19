@@ -1,11 +1,16 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
-
+using System.Collections.Generic;
+using System.Reflection;
+using System.Linq;
 namespace WordZone
 {
+    [System.Serializable]
     public sealed class Commands
     {
+
+        
         public static void v(int v)
         {
             if (v > 0)
@@ -21,7 +26,7 @@ namespace WordZone
 
         public static IEnumerator halt(float time)
         {
-            if(!Tone.Instant)
+            if (!Tone.Instant)
                 yield return new WaitForSeconds(time);
         }
 
@@ -40,8 +45,9 @@ namespace WordZone
 
 
 
-        public static void Wobble(){
-            Tone.Runtime.Wobble=true;
+        public static void Wobble()
+        {
+            Tone.Runtime.Wobble = true;
         }
 
     }
