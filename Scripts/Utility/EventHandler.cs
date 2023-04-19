@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 using System;
-using VGF.Inventory;
-using UnityEngine.Events;
+using VGF.Inventory;    //引用本框架的背包系统
 
+
+//
 public class EventHandler
 {
 
@@ -26,10 +28,11 @@ public class EventHandler
     }
 
     // public static Action OnTimelinePlay;
-
-    // public static void OnTimelinePlayInvoke(){
+    // public static void OnTimelinePlayInvoke()
+    // {
     //    OnTimelinePlay?.Invoke();
     // }
+    
     public static event Action<InventoryLocation, List<InventoryItem>> UpdateInventoryUI;
     public static void CallUpdateInventoryUI(InventoryLocation location, List<InventoryItem> list)
     {
@@ -47,6 +50,4 @@ public class EventHandler
         Debug.Log("RunChapter");
         RunChapter?.Invoke(index);
     }
-
-
 }
