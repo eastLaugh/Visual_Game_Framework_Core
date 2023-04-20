@@ -1,33 +1,42 @@
 using UnityEngine.SceneManagement;
-using VGF.Inventory;
-using VGF.Plot;
-using VGF.SL;
-using AutumnFramework;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using AutumnFramework;
+using VGF.Inventory;
+using VGF.Plot;
+using VGF.SL;
 
+
+//定义VGF核心库，增加游戏的基本操作：开始新游戏、重置游戏数据、保存和加载游戏
 namespace VGF
 {
     public class GlobalSystem
     {
         [RuntimeInitializeOnLoadMethod]
+
+        //初始化框架设置
         private static void Init()
         {
             Settings.Init();
             //Debug.Log(Settings.language);
         }
+
+        //开始新游戏：清空玩家背包的物品，将当前游戏章节设置为0
         public static void NewGame()
         {
-            
             //SceneManager.LoadScene("Persistent Scene", LoadSceneMode.Single);
             InventoryManager.Instance.EmptyItems();
             EventHandler.CallRunChapter(0);
         }
+        
+        //重设游戏数据
         public static void ResetGameData()
         {
-            
+            //供个性化开发
         }
+        
+        //保存游戏进度到磁盘
         public static void SaveGame()
         {
             var saveData = new SaveData();
@@ -36,6 +45,8 @@ namespace VGF
             saveData.ItemDisplayData = Autumn.Harvest<ItemDisplayData>().Save();
             SaveSystem.CreatSaveFile("PlayerData.Sav", saveData);
         }
+
+        //从磁盘上读取游戏进度并恢复游戏状态（读档继续游戏），更新UI
         public static void LoadGame()
         {
             var saveData = SaveSystem.LoadSaveFile<SaveData>("PlayerData.Sav");
@@ -48,5 +59,3 @@ namespace VGF
         }
     }
 }
-
-

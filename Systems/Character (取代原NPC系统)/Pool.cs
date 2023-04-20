@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//´ý¿ª·¢
 public class Pool : MonoBehaviour
 {
     // Start is called before the first frame update
