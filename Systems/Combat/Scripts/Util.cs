@@ -3,46 +3,6 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-
-#region 状态机，用于处理游戏中对象的状态变化
-// using System;
-// using System.Collections.Generic;
-
-// internal class State
-// {
-//     public Action OnUpdate;
-//     public Action OnEnable;
-//     public Action Ondisable;
-//
-//     public void init()
-//     {
-//          //
-//     }
-// }
-
-// internal class FSM<T> where T : Enum
-// {
-//     private Dictionary<T, State> dictStates = new();
-//     public FSM()
-//     {
-//         foreach (var value in Enum.GetValues(typeof(T)) as T[])
-//         {
-//             dictStates.Add(value, new State());
-//         }
-//     }
-//     public State State(T t){
-//         if(dictStates.TryGetValue(t,out var value))
-//         {
-//             return value;
-//         }
-//         else
-//         {
-//             throw new Exception("找不到状态");
-//         }
-//     }
-// }
-
-
 //状态行为
 public class CustomState
 {
@@ -160,7 +120,6 @@ public class FSM<T> where T : struct, Enum
         States.Clear();
     }
 }
-#endregion
 
 #region 敌人相关
 //FSM中的某个状态需要执行的任务
