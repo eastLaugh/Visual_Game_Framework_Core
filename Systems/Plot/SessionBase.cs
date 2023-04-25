@@ -17,7 +17,7 @@ namespace VGF.Plot
 {
     /***********************************基础逻辑************************************/
     [Beans]
-    public abstract class ChapterBase : MonoBehaviour
+    public abstract class SessionBase : MonoBehaviour
     {
         private void Start()
         {

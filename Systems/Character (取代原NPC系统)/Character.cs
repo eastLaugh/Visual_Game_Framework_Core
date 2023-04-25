@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [Beans]
 public class Character : MonoBehaviour, ICharacter
 {
-    //½ÇÉ«ÀàÐÍ·ÖÀàÎª£º·ÇÍæ¼Ò¡¢Íæ¼Ò
+    //ï¿½ï¿½É«ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¡ï¿½ï¿½ï¿½ï¿½
     public enum CharacterType
     {
         NonPlayer, Player
@@ -18,7 +18,7 @@ public class Character : MonoBehaviour, ICharacter
     public static Character Player;
     private ICharacter[] characterComponents;
 
-    //ÉèÖÃ½ÇÉ«Îªµ±Ç°Ê¾Àý£¬»ñÈ¡ÊµÏÖICharacter½Ó¿ÚµÄ×Ó×é¼þ²¢´æ´¢
+    //ï¿½ï¿½ï¿½Ã½ï¿½É«Îªï¿½ï¿½Ç°Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Êµï¿½ï¿½ICharacterï¿½Ó¿Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢
     void Awake()
     {
         if (Type == CharacterType.Player)
@@ -27,7 +27,7 @@ public class Character : MonoBehaviour, ICharacter
         RegCom();
     }
 
-    //»ñÈ¡ÊµÏÖICharacter½Ó¿ÚµÄ×Ó×é¼þ²¢´æ´¢
+    //ï¿½ï¿½È¡Êµï¿½ï¿½ICharacterï¿½Ó¿Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢
     void RegCom()
     {
         characterComponents = GetComponentsInChildren<ICharacter>();
@@ -35,10 +35,10 @@ public class Character : MonoBehaviour, ICharacter
     
     void Update()
     {
-        //¸öÐÔ»¯¿ª·¢
+        //ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
-    //½ÇÉ«½øÈëÊµÏÖµÄ¹¦ÄÜ£¬ÔÚºóÃæ¿ÉÒÔ¸öÐÔ»¯¿ª·¢
+    //ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Êµï¿½ÖµÄ¹ï¿½ï¿½Ü£ï¿½ï¿½Úºï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Character>()?.Type == CharacterType.Player)
@@ -50,7 +50,7 @@ public class Character : MonoBehaviour, ICharacter
         }
     }
 
-    //½ÇÉ«Àë¿ªÊµÏÖµÄ¹¦ÄÜ£¬ÔÚºóÃæ¿ÉÒÔ¸öÐÔ»¯¿ª·¢
+    //ï¿½ï¿½É«ï¿½ë¿ªÊµï¿½ÖµÄ¹ï¿½ï¿½Ü£ï¿½ï¿½Úºï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½
     private void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<Character>()?.Type == CharacterType.Player)
@@ -63,23 +63,23 @@ public class Character : MonoBehaviour, ICharacter
 
     }
 
-    //½ÇÉ«½øÈë
+    //ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½
     public void OnPlayerEnter()
     {
-        //¸öÐÔ»¯¿ª·¢
+        //ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
-    //½ÇÉ«Àë¿ª
+    //ï¿½ï¿½É«ï¿½ë¿ª
     public void OnPlayerExit()
     {
-        //¸öÐÔ»¯¿ª·¢
+        //ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 }
 
-//Ìá¹©ÍØÕ¹·½·¨À©Õ¹ÆäËû¶ÔÏó£¬Ê¹ÆäÄÜ¹»·ÃÎÊ½ÇÉ«ÊµÀý
+//ï¿½á¹©ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½ï¿½Ê½ï¿½É«Êµï¿½ï¿½
 public static class CharacterExtension
 {
-    public static Character at(this VGF.Plot.ChapterBase chapter)
+    public static Character at(this VGF.Plot.SessionBase chapter)
     {
         return null;
     }

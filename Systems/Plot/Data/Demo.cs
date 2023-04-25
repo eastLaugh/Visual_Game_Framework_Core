@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using VGF.Assignment;   //任务系统
-using VGF.Inventory;    //背包系统
+using VGF.Assignment;   //锟斤拷锟斤拷系统
+using VGF.Inventory;    //锟斤拷锟斤拷系统
 
 
-//自定义剧情Demo
+//锟皆讹拷锟斤拷锟斤拷锟紻emo
 namespace VGF.Plot
 {
-    public class Demo : ChapterBase
+    public class Demo : SessionBase
     {
         public override void Run()
         {

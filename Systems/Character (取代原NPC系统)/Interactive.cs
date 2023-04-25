@@ -4,26 +4,26 @@ using AutumnFramework;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
-using Cinemachine;          //Ïà»ú¹¦ÄÜ¿â
+using Cinemachine;          //ç›¸æœºåŠŸèƒ½åº“
 
 
-//È·±£¸Ã½Å±¾Ëù¹ÒÔØµÄÓÎÏ·¶ÔÏóÓĞ Character ºÍ Collider ×é¼ş
+//ç¡®ä¿è¯¥è„šæœ¬æ‰€æŒ‚è½½çš„æ¸¸æˆå¯¹è±¡æœ‰ Character å’Œ Collider ç»„ä»¶
 [RequireComponent(typeof(Character))]
 [RequireComponent(typeof(Collider))]
-//¸ÃÀàÍØÕ¹ÁË½ÇÉ«ÓëÓÎÏ·¶ÔÏóµÄ½»»¥¹¦ÄÜ
+//è¯¥ç±»æ‹“å±•äº†è§’è‰²ä¸æ¸¸æˆå¯¹è±¡çš„äº¤äº’åŠŸèƒ½
 public class Interactive : MonoBehaviour, ICharacter
 {
 
-    [Autowired]     //¸Ã³ÉÔ±½«ÓÉIoCÈİÆ÷×Ô¶¯×¢ÈëÒ»¸öCameraControlÀàĞÍµÄ¶ÔÏó
+    [Autowired]     //è¯¥æˆå‘˜å°†ç”±IoCå®¹å™¨è‡ªåŠ¨æ³¨å…¥ä¸€ä¸ªCameraControlç±»å‹çš„å¯¹è±¡
     public static CameraControl cameraControl;
 
     private ICinemachineCamera currentCamera => FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera;
 
-    private UnityAction OnInteractive;
+    private Queue<UnityAction> Actions=new();
 
     private bool @in;
 
-    //µ±½ÇÉ«½øÈëÓëInteractiveÏà¹ØµÄÅö×²Æ÷Ê±£¬»á½«Ïà»úµÄ¸ú×ÙÄ¿±êÉèÎªµ±Ç°Interactive¶ÔÏó
+    //å½“è§’è‰²è¿›å…¥ä¸Interactiveç›¸å…³çš„ç¢°æ’å™¨æ—¶ï¼Œä¼šå°†ç›¸æœºçš„è·Ÿè¸ªç›®æ ‡è®¾ä¸ºå½“å‰Interactiveå¯¹è±¡
     public void OnPlayerEnter()
     {
         @in = true;
@@ -32,23 +32,27 @@ public class Interactive : MonoBehaviour, ICharacter
 
     private void Update()
     {
-        //°´ÏÂ"E"¼üÊ±´¥·¢
+        //æŒ‰ä¸‹"E"é”®æ—¶è§¦å‘
         if (@in && Input.GetKeyDown(KeyCode.E))
         {
-            OnInteractive?.Invoke();
+            if(Actions.TryDequeue(out UnityAction result)){
+                result.Invoke();
+            }else{
+
+            }
         }
     }
 
-    //µ±½ÇÉ«ÍË³öÓëInteractiveÏà¹ØµÄÅö×²Æ÷Ê±£¬»á½«Ïà»úµÄ¸ú×ÙÄ¿±êÉè»ØÍæ¼Ò
+    //å½“è§’è‰²é€€å‡ºä¸Interactiveç›¸å…³çš„ç¢°æ’å™¨æ—¶ï¼Œä¼šå°†ç›¸æœºçš„è·Ÿè¸ªç›®æ ‡è®¾å›ç©å®¶
     public void OnPlayerExit()
     {
         @in = false;
         currentCamera.LookAt = Character.Player.transform;
     }
 
-    //×¢²áÊÂ¼şµÄ´¦Àí³ÌĞò
+    //æ³¨å†Œäº‹ä»¶çš„å¤„ç†ç¨‹åº
     internal void RegisterAction(Action action)
     {
-        OnInteractive += new UnityAction(action);
+        Actions.Enqueue(new UnityAction(action));
     }
 }

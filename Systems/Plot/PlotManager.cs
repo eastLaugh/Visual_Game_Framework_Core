@@ -11,7 +11,7 @@ namespace VGF.Plot
     {
         public bool StartRun;
         public int currentIndex { get; private set; } = 0;
-        public ChapterBase[] chapters;
+        public SessionBase[] chapters;
 
         //启动指定章节并设置索引
         public void Run(int index)
