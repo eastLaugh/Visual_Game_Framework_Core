@@ -19,7 +19,7 @@ public class Interactive : MonoBehaviour, ICharacter
 
     private ICinemachineCamera currentCamera => FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera;
 
-    private Queue<UnityAction> Actions=new();
+    private Queue<UnityAction> Actions = new();
 
     private bool @in;
 
@@ -35,13 +35,17 @@ public class Interactive : MonoBehaviour, ICharacter
         //按下"E"键时触发
         if (@in && Input.GetKeyDown(KeyCode.E))
         {
-            if(Actions.TryDequeue(out UnityAction result)){
-                result.Invoke();
-            }else{
 
-            }
+
+            //
+            GetComponent<Character>().InteractAllCom();
+        }
+        else
+        {
+
         }
     }
+
 
     //当角色退出与Interactive相关的碰撞器时，会将相机的跟踪目标设回玩家
     public void OnPlayerExit()
@@ -54,5 +58,13 @@ public class Interactive : MonoBehaviour, ICharacter
     internal void RegisterAction(Action action)
     {
         Actions.Enqueue(new UnityAction(action));
+    }
+
+    public void OnInteract()
+    {
+        if (Actions.TryDequeue(out UnityAction result))
+        {
+            result.Invoke();
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace VGF.Plot
         private static AudioCenter audioCenter;
 
         private bool isPlaying;
-        
+
         //章节是否正在运行
         public bool IsPlaying
         {
@@ -37,14 +37,14 @@ namespace VGF.Plot
                 return isPlaying;
             }
         }
-        
+
         //[SerializeField]
         //private Camera playerCamera;
         /// <summary>
         /// 游戏剧情入口
         /// </summary>
         public abstract void Run();
-        
+
         /// <summary>
         /// 切换下一章节
         /// </summary>
@@ -57,7 +57,7 @@ namespace VGF.Plot
 
         /*********************************各系统函数*********************************/
         #region 1.字幕系统（Caption）
-       
+
         /// <summary>
         /// 显示黑色文本
         /// </summary>
@@ -89,7 +89,7 @@ namespace VGF.Plot
 
         [Autowired]
         private SceneLoader sceneLoader;
-        
+
         //切换到指定的场景
         public void SceneMove(string name)
         {
@@ -141,7 +141,12 @@ namespace VGF.Plot
                 interactive.RegisterAction(action);
                 return this;
             }
-
+            public CharacterChainOperator Say(string text)
+            {
+                Say say = gameObject.GetComponent<Say>() ?? gameObject.AddComponent<Say>();
+                say.SayMsg(text);
+                return this;
+            }
             [Obsolete]  //操纵游戏角色
             public CharacterChainOperator Pool(Action action, float rate)
             {
@@ -149,7 +154,7 @@ namespace VGF.Plot
                 return this;
             }
         }
-        
+
         //创建一个角色对象，方便角色操作
         protected CharacterChainOperator at(string name)
         {
@@ -164,14 +169,14 @@ namespace VGF.Plot
             wordZone.ParseAndEnque(text);
         }
 
-  
-       
 
 
 
-        
 
-    #endregion
+
+
+
+        #endregion
 
         #region 4.存档系统
 

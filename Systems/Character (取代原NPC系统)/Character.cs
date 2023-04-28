@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [Beans]
 public class Character : MonoBehaviour, ICharacter
 {
-    //��ɫ���ͷ���Ϊ������ҡ����
+    //??????????????????????
     public enum CharacterType
     {
         NonPlayer, Player
@@ -17,8 +17,10 @@ public class Character : MonoBehaviour, ICharacter
 
     public static Character Player;
     private ICharacter[] characterComponents;
+    
+    public Canvas CharacterCanvas;//TODO
 
-    //���ý�ɫΪ��ǰʾ������ȡʵ��ICharacter�ӿڵ���������洢
+    //?????????????????????ICharacter????????????ϫ
     void Awake()
     {
         if (Type == CharacterType.Player)
@@ -27,18 +29,18 @@ public class Character : MonoBehaviour, ICharacter
         RegCom();
     }
 
-    //��ȡʵ��ICharacter�ӿڵ���������洢
+    //??????ICharacter????????????ϫ
     void RegCom()
     {
         characterComponents = GetComponentsInChildren<ICharacter>();
     }
-    
+
     void Update()
     {
-        //���Ի�����
+        //?????????
     }
 
-    //��ɫ����ʵ�ֵĹ��ܣ��ں�����Ը��Ի�����
+    //???????????????????????????????
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Character>()?.Type == CharacterType.Player)
@@ -50,7 +52,7 @@ public class Character : MonoBehaviour, ICharacter
         }
     }
 
-    //��ɫ�뿪ʵ�ֵĹ��ܣ��ں�����Ը��Ի�����
+    //?????????????????????????????
     private void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<Character>()?.Type == CharacterType.Player)
@@ -63,24 +65,28 @@ public class Character : MonoBehaviour, ICharacter
 
     }
 
-    //��ɫ����
+    public void InteractAllCom()
+    {
+        foreach (var com in characterComponents)
+        {
+            com.OnInteract();
+        }
+    }
+    //???????
     public void OnPlayerEnter()
     {
-        //���Ի�����
+        //?????????
     }
 
-    //��ɫ�뿪
+    //?????
     public void OnPlayerExit()
     {
-        //���Ի�����
+        //?????????
+    }
+
+    public void OnInteract()
+    {
     }
 }
 
-//�ṩ��չ������չ��������ʹ���ܹ����ʽ�ɫʵ��
-public static class CharacterExtension
-{
-    public static Character at(this VGF.Plot.SessionBase chapter)
-    {
-        return null;
-    }
-}
+//???????????????????????????????????

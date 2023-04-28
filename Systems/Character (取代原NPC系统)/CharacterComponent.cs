@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//Ìá¹©½ÇÉ«½øÈëºÍÀë¿ªµÄÊÂ¼þ½Ó¿Ú
+//ï¿½á¹©ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ó¿ï¿½
 public interface ICharacter
 {
     void OnPlayerEnter();
     void OnPlayerExit();
+
+    void OnInteract();
 }

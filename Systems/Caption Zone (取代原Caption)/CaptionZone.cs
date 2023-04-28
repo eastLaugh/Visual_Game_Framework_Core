@@ -4,60 +4,63 @@ using AutumnFramework;
 using UnityEngine;
 using UnityEngine.Pool;
 using System;
-using DG.Tweening;      //ÓÃÓÚ¶¯»­µÄÖÆ×÷ºÍ¹ÜÀí£¬±ãÓÚ¶¯»­µÄ¿ª·¢
-using TMPro;            //ÎÄ±¾ÏÔÊ¾¿â£¬ÄÜÌá¹©¸ü¶à¹¦ÄÜ£¬Èç¸ü¸ßµÄÎÄ±¾ÇåÎú¶È¡¢Ö§³Ö¸»ÎÄ±¾µÈµÈ
+using DG.Tweening;      //ç”¨äºåŠ¨ç”»çš„åˆ¶ä½œå’Œç®¡ç†ï¼Œä¾¿äºåŠ¨ç”»çš„å¼€å‘
+using TMPro;            //æ–‡æœ¬æ˜¾ç¤ºåº“ï¼Œèƒ½æä¾›æ›´å¤šåŠŸèƒ½ï¼Œå¦‚æ›´é«˜çš„æ–‡æœ¬æ¸…æ™°åº¦ã€æ”¯æŒå¯Œæ–‡æœ¬ç­‰ç­‰
 
 
 [Beans]
-//¹ÜÀíÎÄ±¾µÄ¶ÔÏó³Ø£¬ËüÊÇBeanµÄÒ»¸ö×é¼ş
+//ç®¡ç†æ–‡æœ¬çš„å¯¹è±¡æ± ï¼Œå®ƒæ˜¯Beançš„ä¸€ä¸ªç»„ä»¶
 public class CaptionZone : MonoBehaviour
 {
     private IObjectPool<TextMeshProUGUI> pool;
+
+    private IObjectPool<GameObject> UIPool;
     public Canvas canvas;
     public GameObject FloatingText;
 
-    //³õÊ¼»¯×¢Èë²¢´æ´¢¶ÔÏó³Ø
+    //åˆå§‹åŒ–æ³¨å…¥å¹¶å­˜å‚¨å¯¹è±¡æ± 
     private void Awake()
     {
         this.Bean();
         pool = new ObjectPool<TextMeshProUGUI>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject);
+
     }
 
     private void Start()
     {
-        //¸öĞÔ»¯¿ª·¢
+        //ä¸ªæ€§åŒ–å¼€å‘
     }
 
-    //´´½¨ĞÂ¶ÔÏó×÷Îª¶ÔÏó³ØµÄÔªËØ
+    //åˆ›å»ºæ–°å¯¹è±¡ä½œä¸ºå¯¹è±¡æ± çš„å…ƒç´ 
     private TextMeshProUGUI CreatePooledItem()
     {
         GameObject gameObject1 = Instantiate(FloatingText, canvas.transform);
         return gameObject1.GetComponent<TextMeshProUGUI>();
     }
 
-    //ÔÚÈ¡³ö¶ÔÏó³ØÔªËØÊ±±»µ÷ÓÃ£¬ÉèÖÃ¶ÔÏóÎª¿É¼û
+    //åœ¨å–å‡ºå¯¹è±¡æ± å…ƒç´ æ—¶è¢«è°ƒç”¨ï¼Œè®¾ç½®å¯¹è±¡ä¸ºå¯è§
     private void OnTakeFromPool(TextMeshProUGUI obj)
     {
         obj.gameObject.SetActive(true);
     }
 
-    //ÔÚ¶ÔÏó±»¹é»¹³ØÖĞÊ±µ÷ÓÃ£¬ÉèÖÃ¶ÔÏóÎª²»¿É¼û
+    //åœ¨å¯¹è±¡è¢«å½’è¿˜æ± ä¸­æ—¶è°ƒç”¨ï¼Œè®¾ç½®å¯¹è±¡ä¸ºä¸å¯è§
     private void OnReturnedToPool(TextMeshProUGUI obj)
     {
         obj.gameObject.SetActive(false);
     }
 
-    //ÔÚ¶ÔÏó±»Çå³ıÊ±µ÷ÓÃ£¬Êä³öÈÕÖ¾ĞÅÏ¢
+    //åœ¨å¯¹è±¡è¢«æ¸…é™¤æ—¶è°ƒç”¨ï¼Œè¾“å‡ºæ—¥å¿—ä¿¡æ¯
     private void OnDestroyPoolObject(TextMeshProUGUI obj)
     {
         Debug.Log("OnDestroyPoolObject");
     }
 
-    //ÓÃÓÚÏÔÊ¾ºÍµ÷ÓÃ¸¡¶¯ÎÄ×Ö³Ø
+    //ç”¨äºæ˜¾ç¤ºå’Œè°ƒç”¨æµ®åŠ¨æ–‡å­—æ± 
     void OnGUI()
     {
         GUILayout.Label("Pool size: " + pool.CountInactive, new GUIStyle(GUI.skin.label) { fontSize = 60 });
-        //µã»÷°´Å¥»áËæ»úÉú³ÉÒ»¶¨ÊıÁ¿ºÍÎ»ÖÃµÄ¸¡¶¯ÎÄ×Ö
+        //ç‚¹å‡»æŒ‰é’®ä¼šéšæœºç”Ÿæˆä¸€å®šæ•°é‡å’Œä½ç½®çš„æµ®åŠ¨æ–‡å­—
         if (GUILayout.Button("Create Particles", new GUIStyle(GUI.skin.button) { fontSize = 60 }))
         {
             var amount = UnityEngine.Random.Range(1, 3);
@@ -69,8 +72,8 @@ public class CaptionZone : MonoBehaviour
         }
     }
 
-    /*»ñÈ¡¶ÔÏóÉèÖÃÊôĞÔºÍÎ»ÖÃ£¬Í¨¹ıTweenerÊµÏÖÎÄ±¾µÄ¸¡¶¯Ğ§¹û
-    ¶¯»­½áÊøºó¹é»¹¶ÔÏó³Ø£¬ÉèÖÃÎÄ±¾Í¸Ã÷¶È±ä»¯Ğ§¹û*/
+    /*è·å–å¯¹è±¡è®¾ç½®å±æ€§å’Œä½ç½®ï¼Œé€šè¿‡Tweenerå®ç°æ–‡æœ¬çš„æµ®åŠ¨æ•ˆæœ
+    åŠ¨ç”»ç»“æŸåå½’è¿˜å¯¹è±¡æ± ï¼Œè®¾ç½®æ–‡æœ¬é€æ˜åº¦å˜åŒ–æ•ˆæœ*/
     void Float(Vector3 anchoredPosition, string text)
     {
         TextMeshProUGUI tmp = pool.Get();
