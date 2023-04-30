@@ -14,8 +14,8 @@ using Cinemachine;          //相机功能库
 public class Interactive : MonoBehaviour, ICharacter
 {
 
-    [Autowired]     //该成员将由IoC容器自动注入一个CameraControl类型的对象
-    public static CameraControl cameraControl;
+    // [Autowired]     //该成员将由IoC容器自动注入一个CameraControl类型的对象
+    // public static CameraControl cameraControl;
 
     private ICinemachineCamera currentCamera => FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera;
 

@@ -16,7 +16,7 @@ public class Character : MonoBehaviour, ICharacter
     public CharacterType Type;
 
     public static Character Player;
-    private ICharacter[] characterComponents;
+    private ICharacter[] characterComponents=>GetComponentsInChildren<ICharacter>();
     
     public Canvas CharacterCanvas;//TODO
 
@@ -32,7 +32,7 @@ public class Character : MonoBehaviour, ICharacter
     //??????ICharacter????????????ϫ
     void RegCom()
     {
-        characterComponents = GetComponentsInChildren<ICharacter>();
+        // characterComponents = ;
     }
 
     void Update()
@@ -43,6 +43,7 @@ public class Character : MonoBehaviour, ICharacter
     //???????????????????????????????
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("OnTriggerEnter");
         if (other.GetComponent<Character>()?.Type == CharacterType.Player)
         {
             foreach (var com in characterComponents)
