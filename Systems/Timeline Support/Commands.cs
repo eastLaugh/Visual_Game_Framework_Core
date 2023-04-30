@@ -4,14 +4,15 @@ using System.Reflection;
 using AutumnFramework;
 using UnityEngine;
 
+
+//自定义VGF.Timeline库，实现控制游戏对象和执行自定义逻辑
 namespace VGF.Timeline
 {
-
     [System.Serializable]
     public class Commands
     {
         #region  序列化
-
+        //该列表用于存储序列化的命令
         [System.Serializable]
         public struct SerializedCommand
         {
@@ -29,6 +30,8 @@ namespace VGF.Timeline
         }
         public List<SerializedCommand> SerializedCommands;
 
+
+        //该列表用于存储序列化的命令
         public void 润()
         {
             foreach (SerializedCommand cmd in SerializedCommands)
@@ -41,6 +44,7 @@ namespace VGF.Timeline
                 else
                 {
                     List<object> paraments = new();
+                    //获取命令名和参数列表
                     foreach (SerializedCommand.StringParamentOrObjectParamentOrFloatParament parament in cmd.paraments)
                     {
                         if (parament.StringParament != null)
@@ -61,6 +65,7 @@ namespace VGF.Timeline
                         }
                     }
 
+                    //调试
                     Debug.Log($"执行  {cmd.Command} ( {string.Join(" , ", paraments)} )");
                     try
                     {
@@ -79,7 +84,8 @@ namespace VGF.Timeline
 
         [Autowired]
         private static WordZone.WordZone wordZone;
-        public static void Word(string text){
+        public static void Word(string text)
+        {
             wordZone.ParseAndEnque(text);
         }
     }
