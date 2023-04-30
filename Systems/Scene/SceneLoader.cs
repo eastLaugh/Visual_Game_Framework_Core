@@ -80,7 +80,7 @@ namespace VGF.SceneSystem
             }
 
             AfterSceneLoaded?.Invoke();
-            AfterSceneLoaded=null;
+            AfterSceneLoaded = null;
             yield break;
         }
 
@@ -89,13 +89,18 @@ namespace VGF.SceneSystem
             Scene OriginScene;
 
         }
-        public void BindSceneEvent(string sceneName,Action<Msg> action)
+        public void BindSceneEvent(string sceneName, Action<Msg> action)
         {
-            if (SceneEvent.TryAdd(sceneName,action))
+            if (SceneEvent.TryAdd(sceneName, action))
             {
-            }else if(SceneEvent.TryGetValue(sceneName,out var existedAction)){
+                //
+            }
+            else if (SceneEvent.TryGetValue(sceneName, out var existedAction))
+            {
                 //throw new Exception("SceneLoader重复Bind");
-            }else{
+            }
+            else
+            {
                 //throw new Exception("SceneLoader未知错误，请检查");
             }
         }
@@ -110,8 +115,9 @@ namespace VGF.SceneSystem
         }
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if(SceneEvent.TryGetValue(scene.name,out Action<Msg> action)){
-                action(new Msg{});
+            if (SceneEvent.TryGetValue(scene.name, out Action<Msg> action))
+            {
+                action(new Msg { });
             }
         }
     }
