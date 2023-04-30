@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//�ṩ��ɫ������뿪���¼��ӿ�
+//提供角色进入/离开、互动的事件接口
 public interface ICharacter
 {
     void OnPlayerEnter();
