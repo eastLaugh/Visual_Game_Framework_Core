@@ -57,7 +57,6 @@ namespace VGF.Plot
 
         /*********************************各系统函数*********************************/
         #region 1.字幕系统（Caption）
-
         /// <summary>
         /// 显示黑色文本
         /// </summary>
@@ -82,11 +81,9 @@ namespace VGF.Plot
         {
             CaptionLoader.instance.Stop();
         }
-
         #endregion
 
         #region 2.场景系统
-
         [Autowired]
         private SceneLoader sceneLoader;
 
@@ -114,11 +111,9 @@ namespace VGF.Plot
         {
             BindSceneEvent(name, action);
         }
-
         #endregion
 
         #region 3.NPC及对话系统
-
         //操控游戏角色
         protected struct CharacterChainOperator
         {
@@ -141,12 +136,15 @@ namespace VGF.Plot
                 interactive.RegisterAction(action);
                 return this;
             }
+
+            //使角色在游戏中说话
             public CharacterChainOperator Say(string text)
             {
                 Say say = gameObject.GetComponent<Say>() ?? gameObject.AddComponent<Say>();
                 say.SayMsg(text);
                 return this;
             }
+            
             [Obsolete]  //操纵游戏角色
             public CharacterChainOperator Pool(Action action, float rate)
             {
@@ -161,25 +159,15 @@ namespace VGF.Plot
             return new CharacterChainOperator(name);
         }
 
-
         [Autowired] //向游戏对话框中添加文字
         private static WordZone.WordZone wordZone;
         public static void Word(string text)
         {
             wordZone.ParseAndEnque(text);
         }
-
-
-
-
-
-
-
-
         #endregion
 
         #region 4.存档系统
-
         /// <summary>
         /// 切换章节自动存档（要在chapters里手动调用）
         /// </summary>
@@ -189,11 +177,9 @@ namespace VGF.Plot
             HintLoader.Instance.HintWithSeconds("AutoSave Completed", 1);
             Debug.Log("AutoSave Completed");
         }
-
         #endregion
 
         #region 5.背包系统
-
         /// <summary>
         /// 查找背包中的物品
         /// </summary>
@@ -201,11 +187,9 @@ namespace VGF.Plot
         {
             return InventoryManager.Instance.SearchItem(ID, num);
         }
-
         #endregion
 
         #region 6.时间线系统（Timeline）
-
         //触发一个指定名称的时间线的播放
         protected void Timeline(string name)
         {
@@ -225,7 +209,6 @@ namespace VGF.Plot
             else
                 EventHandler.PlayTimelineInvoke(name, action);
         }
-
         #endregion
 
         #region 7.音乐系统

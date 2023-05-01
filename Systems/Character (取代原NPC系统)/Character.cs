@@ -87,5 +87,6 @@ public class Character : MonoBehaviour, ICharacter
 
     public void OnInteract()
     {
+        //
     }
 }

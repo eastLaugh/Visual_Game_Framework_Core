@@ -60,6 +60,7 @@ public class Interactive : MonoBehaviour, ICharacter
         Actions.Enqueue(new UnityAction(action));
     }
 
+    //尝试取出队列中的元素并执行该元素所代表的操作
     public void OnInteract()
     {
         if (Actions.TryDequeue(out UnityAction result))
