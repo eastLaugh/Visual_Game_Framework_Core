@@ -16,8 +16,8 @@ public class Character : MonoBehaviour, ICharacter
     public CharacterType Type;
 
     public static Character Player;
-    private ICharacter[] characterComponents=>GetComponentsInChildren<ICharacter>();
-    
+    private ICharacter[] characterComponents => GetComponentsInChildren<ICharacter>();
+
     //public Canvas CharacterCanvas;//TODO
 
     //设置角色为当前示例，获取实现ICharacter接口的子组件并存储
@@ -39,7 +39,7 @@ public class Character : MonoBehaviour, ICharacter
     {
         //个性化开发
     }
-    
+
     //角色进入实现的功能，在后面可以个性化开发
     private void OnTriggerEnter(Collider other)
     {
@@ -52,6 +52,16 @@ public class Character : MonoBehaviour, ICharacter
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<Character>()?.Type == CharacterType.Player)
+        {
+            foreach (var com in characterComponents)
+            {
+                com.OnPlayerEnter();
+            }
+        }
+    }
     //角色离开实现的功能，在后面可以个性化开发
     private void OnTriggerExit(Collider other)
     {
@@ -63,6 +73,17 @@ public class Character : MonoBehaviour, ICharacter
             }
         }
 
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<Character>()?.Type == CharacterType.Player)
+        {
+            foreach (var com in characterComponents)
+            {
+                com.OnPlayerExit();
+            }
+        }
     }
 
     public void InteractAllCom()
