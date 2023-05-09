@@ -1,8 +1,10 @@
 using AutumnFramework;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Editor;
 using UnityEngine;
-// using UnityEngine.Localization.Settings;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 
 //用于存储和设置游戏的全局信息，比如角色速度、是否全屏、分辨率、语言等
@@ -27,9 +29,9 @@ public class Settings
         //语言设置暂时置空，可供个性化更改开发
         switch (num)
         {
-            // case 0:LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._chineseLocale); break;
-            // case 1:LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._englishLocale); break;
-            // case 2:LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._JanpaneseLocale);break;
+            case 0:LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._chineseLocale); break;
+            case 1:LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._englishLocale); break;
+             //case 2:LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._JanpaneseLocale);break;
         }
         
         //设置分辨率、全屏模式
@@ -68,9 +70,9 @@ public class Settings
             language = (Language)num;
             switch (num)
             {
-                // case 0: LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._chineseLocale); break;  //zh-cn
-                // case 1: LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._englishLocale); break;  //en
-                // case 2: LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._JanpaneseLocale); break;//jp
+                 case 0: LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._chineseLocale); break;  //zh-cn
+                 case 1: LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._englishLocale); break;  //en
+                 //case 2: LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._JanpaneseLocale); break;//jp
             }
 
         }
