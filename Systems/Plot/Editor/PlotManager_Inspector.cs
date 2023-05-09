@@ -1,22 +1,22 @@
 using UnityEditor;
 using UnityEngine;
 
-//´´½¨¸ÃÃüÃû¿Õ¼ä·½±ãÆäÔÚÆäËûÏîÄ¿ÎÄ¼şÖĞÊ¹ÓÃ
+//åˆ›å»ºè¯¥å‘½åç©ºé—´æ–¹ä¾¿å…¶åœ¨å…¶ä»–é¡¹ç›®æ–‡ä»¶ä¸­ä½¿ç”¨
 namespace VGF.Plot
 {
-    //½«¸ÃÀàÓ¦ÓÃµ½ÌØ¶¨ÀàĞÍµÄ×é¼şÖĞ
+    //å°†è¯¥ç±»åº”ç”¨åˆ°ç‰¹å®šç±»å‹çš„ç»„ä»¶ä¸­
     [CustomEditor(typeof(PlotManager))]
 
-    //¼ì²éPlotManagerµÄ´¦ÀíºÍÔËĞĞÊÇ·ñÕı³£
+    //æ£€æŸ¥PlotManagerçš„å¤„ç†å’Œè¿è¡Œæ˜¯å¦æ­£å¸¸
     public class PlotManager_Inspector : Editor
     {
-        //½¨Á¢ÔÚ»ùÀàGUIÉÏµÄ¼ì²é
+        //å»ºç«‹åœ¨åŸºç±»GUIä¸Šçš„æ£€æŸ¥
         public override void OnInspectorGUI()
         {
-            //ÔÚInspectorÃæ°åÉÏÏÔÊ¾ËùÓĞ»ùÀàÔªËØ
+            //åœ¨Inspectoré¢æ¿ä¸Šæ˜¾ç¤ºæ‰€æœ‰åŸºç±»å…ƒç´ 
             base.OnInspectorGUI();
 
-            //µ±ÓÃ»§°´ÏÂ"Run"°´Å¥ºó£¬µ÷ÓÃPlotManagerµÄ"Run()"º¯Êı£¬Ë÷Òıµ±Ç°µÄÇé½Ú£»·ñÔòÖ±½Ó±¨´í
+            //å½“ç”¨æˆ·æŒ‰ä¸‹"Run"æŒ‰é’®åï¼Œè°ƒç”¨PlotManagerçš„"Run()"å‡½æ•°ï¼Œç´¢å¼•å½“å‰çš„æƒ…èŠ‚ï¼›å¦åˆ™ç›´æ¥æŠ¥é”™
             if (GUILayout.Button(new GUIContent("Run")))
             {
                 if (Application.isPlaying)
