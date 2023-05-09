@@ -103,7 +103,11 @@ namespace WordZone
                 {
                     StopCoroutine(coroutine);
                 }
+<<<<<<< Updated upstream
                 Text.text="";
+=======
+                Text.SetText("");
+>>>>>>> Stashed changes
                 StartCoroutine(RenderPiece(currentPiece, true));
             });
             fsm.State(EState.WaitUser).OnEnter(() =>

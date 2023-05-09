@@ -26,14 +26,17 @@ namespace VGF
         public static void NewGame()
         {
             //SceneManager.LoadScene("Persistent Scene", LoadSceneMode.Single);
-            InventoryManager.Instance.EmptyItems();
+            ResetGameData();
+            EventHandler.CallNewGame();
             EventHandler.CallRunChapter(0);
         }
         
         //重设游戏数据
         public static void ResetGameData()
         {
-            //供个性化开发
+            InventoryManager.Instance.EmptyItems();
+            DataCollection.playerHP = 100;
+            DataCollection.playerMaxHP = 100;
         }
         
         //保存游戏进度到磁盘

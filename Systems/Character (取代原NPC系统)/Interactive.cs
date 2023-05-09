@@ -9,7 +9,7 @@ using Cinemachine;          //相机功能库
 
 //确保该脚本所挂载的游戏对象有 Character 和 Collider 组件
 [RequireComponent(typeof(Character))]
-[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Collider2D))]
 //该类拓展了角色与游戏对象的交互功能
 public class Interactive : MonoBehaviour, ICharacter
 {

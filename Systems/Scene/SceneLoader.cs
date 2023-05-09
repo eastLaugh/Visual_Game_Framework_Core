@@ -10,7 +10,7 @@ using AutumnFramework;
 //自定义VGF.SceneSystem，实现场景加载器的功能
 namespace VGF.SceneSystem
 {
-    [Beans]
+    [ManualBean]
     public class SceneLoader : MonoBehaviour
     {
 
@@ -35,7 +35,15 @@ namespace VGF.SceneSystem
             this.Bean(); //由于某种复杂原因，需要加这个。详细直接找zmq本人
         }
 
+<<<<<<< Updated upstream
         //根据场景名称加载指定场景
+=======
+        private void OnDestroy()
+        {
+            this.UnBean();
+        }
+
+>>>>>>> Stashed changes
         public void SwitchSceneByName(string name)
         {
             StartCoroutine(LoadSceneSetActive(name));
@@ -90,6 +98,9 @@ namespace VGF.SceneSystem
             AfterSceneLoaded?.Invoke();
             AfterSceneLoaded = null;
             yield break;
+
+            Autumn.Autowired();
+
         }
 
         //用于传递事件需要的参数

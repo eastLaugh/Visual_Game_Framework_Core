@@ -215,7 +215,7 @@ PrefabInstance:
     - target: {fileID: 6208854421604456361, guid: 529c0ca9668ad704a9d9e302721bf451, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -7195967388339157333, guid: 2128667244fae3b42af9e1196d530ba8, type: 2}
+      objectReference: {fileID: -4976023176516081484, guid: 2128667244fae3b42af9e1196d530ba8, type: 2}
     - target: {fileID: 6208854421604456361, guid: 529c0ca9668ad704a9d9e302721bf451, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1

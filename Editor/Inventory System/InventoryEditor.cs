@@ -48,12 +48,12 @@ public class InventoryEditor : EditorWindow
         root.Add(label);*/
 
         // 引入UXML
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/Inventory System/InventoryEditor.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Visual_Game_Framework_Core/Editor/Inventory System/InventoryEditor.uxml");
         VisualElement mainTemplate = visualTree.Instantiate();
         root.Add(mainTemplate);
-        itemRowTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/Inventory System/ItemRowTemplate.uxml");
+        itemRowTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Visual_Game_Framework_Core/Editor/Inventory System/ItemRowTemplate.uxml");
         // 拿到默认Icon图片
-        defaultIcon = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Unity Store Resouces/M Studio/Art/Items/Icons/icon_M.png");
+        defaultIcon = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/UnityPack/M Studio/Art/UI/ui_pack_06.png");
         // 变量赋值
         itemListView = root.Q<VisualElement>("BackGround").Q<ListView>("ItemList");
         itemDetailsSection = root.Q<ScrollView>("ItemDetails");

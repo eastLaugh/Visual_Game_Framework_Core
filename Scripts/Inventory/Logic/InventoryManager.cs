@@ -19,6 +19,11 @@ namespace VGF.Inventory
         [Header("背包数据")]
         public InventoryBag_SO playerBag_SO;
 
+        public void NewGame()
+        {
+            AddItem(1002, 1);
+            //EventHandler.CallUpdateInventoryUI(InventoryLocation.player, playerBag_SO.itemList);
+        }
         /// <summary>
         /// 找到物品信息
         /// </summary>
@@ -133,8 +138,13 @@ namespace VGF.Inventory
         void Start()
         {
             EventHandler.CallUpdateInventoryUI(InventoryLocation.player, playerBag_SO.itemList);
+            EventHandler.NewGame += NewGame;
         }
-
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            EventHandler.NewGame -= NewGame;
+        }
         //每一帧都会调用，实现实时更新
         void Update()
         {

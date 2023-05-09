@@ -53,7 +53,26 @@ public class EventHandler
     //用于触发运行章节的事件
     public static void CallRunChapter(int index)
     {
-        Debug.Log("RunChapter");
+        //Debug.Log("RunChapter");
         RunChapter?.Invoke(index);
     }
+
+    public static event Action PlayerDie;
+    public static void CallPlayerDie()
+    {
+        PlayerDie?.Invoke();
+    }
+
+    public static event Action NewGame;
+    public static void CallNewGame()
+    {
+        NewGame?.Invoke();
+    }
+
+    public static event Action<int> DoDamage2Player;
+    public static void CallDoDamage2Player(int damage)
+    {
+        DoDamage2Player?.Invoke(damage);
+    }
+
 }
