@@ -59,17 +59,17 @@ public class CaptionZone : MonoBehaviour
     //用于显示和调用浮动文字池
     void OnGUI()
     {
-        GUILayout.Label("Pool size: " + pool.CountInactive, new GUIStyle(GUI.skin.label) { fontSize = 60 });
-        //点击按钮会随机生成一定数量和位置的浮动文字
-        if (GUILayout.Button("Create Particles", new GUIStyle(GUI.skin.button) { fontSize = 60 }))
-        {
-            var amount = UnityEngine.Random.Range(1, 3);
-            for (int i = 0; i < amount; ++i)
-            {
-                Float(new Vector2(UnityEngine.Random.Range(Screen.width / -2f, Screen.width / 2f), UnityEngine.Random.Range(Screen.height / -2f, Screen.height / 2f))
-                , UnityEngine.Random.Range(99, 999).ToString());
-            }
-        }
+        // GUILayout.Label("Pool size: " + pool.CountInactive, new GUIStyle(GUI.skin.label) { fontSize = 60 });
+        // //点击按钮会随机生成一定数量和位置的浮动文字
+        // if (GUILayout.Button("Create Particles", new GUIStyle(GUI.skin.button) { fontSize = 60 }))
+        // {
+        //     var amount = UnityEngine.Random.Range(1, 3);
+        //     for (int i = 0; i < amount; ++i)
+        //     {
+        //         Float(new Vector2(UnityEngine.Random.Range(Screen.width / -2f, Screen.width / 2f), UnityEngine.Random.Range(Screen.height / -2f, Screen.height / 2f))
+        //         , UnityEngine.Random.Range(99, 999).ToString());
+        //     }
+        // }
     }
 
     /*获取对象设置属性和位置，通过Tweener实现文本的浮动效果

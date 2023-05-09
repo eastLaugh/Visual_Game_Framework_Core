@@ -21,8 +21,6 @@ public abstract class UICollection : MonoBehaviour
     
     protected virtual void Awake()
     {
-        Debug.Log(233);
-
         pool = new ObjectPool<GameObject>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject);
     }
 

@@ -18,7 +18,7 @@ public class Character : MonoBehaviour, ICharacter
     public static Character Player;
     private ICharacter[] characterComponents=>GetComponentsInChildren<ICharacter>();
     
-    public Canvas CharacterCanvas;//TODO
+    //public Canvas CharacterCanvas;//TODO
 
     //设置角色为当前示例，获取实现ICharacter接口的子组件并存储
     void Awake()
@@ -43,7 +43,6 @@ public class Character : MonoBehaviour, ICharacter
     //角色进入实现的功能，在后面可以个性化开发
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
         if (other.GetComponent<Character>()?.Type == CharacterType.Player)
         {
             foreach (var com in characterComponents)

@@ -103,6 +103,7 @@ namespace WordZone
                 {
                     StopCoroutine(coroutine);
                 }
+                Text.text="";
                 StartCoroutine(RenderPiece(currentPiece, true));
             });
             fsm.State(EState.WaitUser).OnEnter(() =>
@@ -246,12 +247,12 @@ namespace WordZone
         string textAreaText;
         private void OnGUI()
         {
-            textAreaText = GUILayout.TextArea(textAreaText, new GUIStyle(GUI.skin.textArea) { fontSize = 32 });
-            if (GUILayout.Button("Pop Word Zone", new GUIStyle(GUI.skin.button) { fontSize = 32 }))
-            {
-                pieces.Enqueue(WordPiece.Parser(textAreaText));
-            }
-            GUILayout.Label(fsm.CurrentState.ToString(), new GUIStyle(GUI.skin.label) { fontSize = 32 });
+            // textAreaText = GUILayout.TextArea(textAreaText, new GUIStyle(GUI.skin.textArea) { fontSize = 32 });
+            // if (GUILayout.Button("Pop Word Zone", new GUIStyle(GUI.skin.button) { fontSize = 32 }))
+            // {
+            //     pieces.Enqueue(WordPiece.Parser(textAreaText));
+            // }
+            // GUILayout.Label(fsm.CurrentState.ToString(), new GUIStyle(GUI.skin.label) { fontSize = 32 });
         }
     }
 }

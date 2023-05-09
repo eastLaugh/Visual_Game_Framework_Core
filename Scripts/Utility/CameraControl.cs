@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using AutumnFramework;
 using UnityEngine;
-//ÒıÓÃUnityµÚÈı·½¿â£¬Ìá¹©ÁËÔÚÓÎÏ·¿ª·¢ÖĞ³£ÓÃµÄ¶¯»­Ğ§¹û£¬°üÀ¨Tween¡¢ĞòÁĞ¡¢Ñ­»·µÈ¹¦ÄÜ
+//å¼•ç”¨Unityç¬¬ä¸‰æ–¹åº“ï¼Œæä¾›äº†åœ¨æ¸¸æˆå¼€å‘ä¸­å¸¸ç”¨çš„åŠ¨ç”»æ•ˆæœï¼ŒåŒ…æ‹¬Tweenã€åºåˆ—ã€å¾ªç¯ç­‰åŠŸèƒ½
 using DG.Tweening;
 
 
-[BeanInScene]
-//ÊµÏÖ¿ØÖÆÏà»úµÄÒÆ¶¯
+// [BeanInScene]
+//å®ç°æ§åˆ¶ç›¸æœºçš„ç§»åŠ¨
 public class CameraControl : MonoBehaviour
 {
     public Transform leftborder;
@@ -16,19 +16,19 @@ public class CameraControl : MonoBehaviour
     private Transform playerTransform;
     public float speed;
 
-    //½Å±¾³õÊ¼Ê±ÔËĞĞ£¬»ñÈ¡Íæ¼ÒµÄÎ»ÖÃ
+    //è„šæœ¬åˆå§‹æ—¶è¿è¡Œï¼Œè·å–ç©å®¶çš„ä½ç½®
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    //ÖğÖ¡¸üĞÂÏà»úÎ»ÖÃ
+    //é€å¸§æ›´æ–°ç›¸æœºä½ç½®
     void Update()
     {
         var campos = transform.localPosition;
         var playerPosX = playerTransform.localPosition.x;
 
-        //±£Ö¤½ÇÉ«ÓÀÔ¶ÔÚÏà»ú·¶Î§ÄÚ
+        //ä¿è¯è§’è‰²æ°¸è¿œåœ¨ç›¸æœºèŒƒå›´å†…
         if (transform.localPosition.x < -8.5f)
         {
             if (playerPosX < transform.localPosition.x)
@@ -42,13 +42,13 @@ public class CameraControl : MonoBehaviour
 
         //Debug.Log(transform.localPosition.x);
 
-        //ÅĞ¶ÏÏà»úÊÇ·ñĞèÒª¸úËæ½ÇÉ«ÒÆ¶¯²¢Ó¦ÓÃÏà»úĞÂµÄ±¾µØ×ø±ê
+        //åˆ¤æ–­ç›¸æœºæ˜¯å¦éœ€è¦è·Ÿéšè§’è‰²ç§»åŠ¨å¹¶åº”ç”¨ç›¸æœºæ–°çš„æœ¬åœ°åæ ‡
         if (Mathf.Abs(campos.x - playerPosX) > 1f)
             campos.x = campos.x + (playerPosX - campos.x) * speed * Time.deltaTime;
         transform.localPosition = campos;
     }
 
-    //ÉèÖÃ³õÖµ
+    //è®¾ç½®åˆå€¼
     public CameraControl()
     {
         deltaPlayerToCamer = Vector3.back;
@@ -58,17 +58,17 @@ public class CameraControl : MonoBehaviour
     Vector3 originTransformPosition;
     Tweener tweener;
 
-    //ÔÚÇĞ»»Ïà»úµÄÊ±ºòµ÷ÓÃ£¬ÀûÓÃDOTween¿â½«Ïà»úÒÆ¶¯µ½ĞÂµÄÎ»ÖÃ£¨´«ÈëµÄpositionµÄÎ»ÖÃ£©
+    //åœ¨åˆ‡æ¢ç›¸æœºçš„æ—¶å€™è°ƒç”¨ï¼Œåˆ©ç”¨DOTweenåº“å°†ç›¸æœºç§»åŠ¨åˆ°æ–°çš„ä½ç½®ï¼ˆä¼ å…¥çš„positionçš„ä½ç½®ï¼‰
     internal void Focus(Vector3 position)
     {
         originTransformPosition = transform.position;
         tweener = transform.DOMove(position - new Vector3(0, 0, 8), 1f);
     }
 
-    //´ÓĞÂÎ»ÖÃ·µ»Øµ½Ô­Ê¼Î»ÖÃÊ±µ÷ÓÃ£¬ÈÃDOTween¿â·´Ïò²¥·ÅÒÆ¶¯¶¯»­£¬Ê¹Ïà»ú´ÓĞÂÎ»ÖÃ»Øµ½Ô­Ê¼Î»ÖÃ
+    //ä»æ–°ä½ç½®è¿”å›åˆ°åŸå§‹ä½ç½®æ—¶è°ƒç”¨ï¼Œè®©DOTweenåº“åå‘æ’­æ”¾ç§»åŠ¨åŠ¨ç”»ï¼Œä½¿ç›¸æœºä»æ–°ä½ç½®å›åˆ°åŸå§‹ä½ç½®
     internal void UnFocus()
     {
-        Debug.Log("unfocus");       //¼à²â¸Ãº¯ÊıÊÇ·ñÕı³£ÔËĞĞ
+        Debug.Log("unfocus");       //ç›‘æµ‹è¯¥å‡½æ•°æ˜¯å¦æ­£å¸¸è¿è¡Œ
         tweener.PlayBackwards();
     }
 }

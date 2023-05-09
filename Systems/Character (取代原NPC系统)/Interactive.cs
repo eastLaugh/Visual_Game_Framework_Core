@@ -27,7 +27,14 @@ public class Interactive : MonoBehaviour, ICharacter
     public void OnPlayerEnter()
     {
         @in = true;
-        currentCamera.LookAt = transform;
+        try
+        {
+            currentCamera.LookAt = transform;
+        }
+        catch 
+        {
+
+        }
     }
 
     private void Update()
@@ -51,7 +58,14 @@ public class Interactive : MonoBehaviour, ICharacter
     public void OnPlayerExit()
     {
         @in = false;
-        currentCamera.LookAt = Character.Player.transform;
+        try
+        {
+            currentCamera.LookAt = Character.Player.transform;
+        }
+        catch 
+        {
+            
+        }
     }
 
     //注册事件的处理程序

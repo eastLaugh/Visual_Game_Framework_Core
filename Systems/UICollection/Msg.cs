@@ -4,20 +4,20 @@ using UnityEngine;
 using AutumnFramework;
 
 
-//¸ÃÀàÓÃÓÚÔÚ½çÃæÉÏÏÔÊ¾ÏûÏ¢
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
 [ManualBean]
 public class Msg : UICollection
 {
     public GameObject CanvasPrefab;
 
-    //×¢²á×ÔÉíÎªBean¶ÔÏó
+    //×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªBeanï¿½ï¿½ï¿½ï¿½
     protected override void Awake()
     {
         base.Awake();
         this.Bean();
     }
 
-    //¶ÔĞÂ½¨¶ÔÏó½øĞĞÉèÖÃ
+    //ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     protected override void OnCreate(GameObject newlyCreatedObject)
     {
         newlyCreatedObject.GetComponentInChildren<UnityEngine.UI.Button>().onClick.AddListener(() =>
@@ -29,7 +29,7 @@ public class Msg : UICollection
     [Autowired]
     private static Msg msg;
     
-    //ÔÚÖ¸¶¨Î»ÖÃ´´½¨MsgÔ¤ÖÆÌå£¬²¢ÉèÖÃÏÔÊ¾µÄÎÄ±¾¡¢¸¸¶ÔÏóºÍÎ»ÖÃ
+    //ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½Ã´ï¿½ï¿½ï¿½MsgÔ¤ï¿½ï¿½ï¿½å£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
     public static void Show(string text, GameObject parent, Vector3 postion)
     {
         GameObject gameObject1 = msg.pool.Get();
@@ -39,4 +39,3 @@ public class Msg : UICollection
         gameObject1.transform.position = postion;
     }
 }
-s

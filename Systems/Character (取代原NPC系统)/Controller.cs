@@ -3,21 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//¸ÃÀàÓÃÓÚ¿ØÖÆ½ÇÉ«ÒÆ¶¯
+//è¯¥ç±»ç”¨äºæ§åˆ¶è§’è‰²ç§»åŠ¨
+[RequireComponent(typeof(CharacterController))]
 public class Controller : MonoBehaviour
 {
-    private CharacterController controller;     //½ÇÉ«¿ØÖÆ
-    private float gravityValue = -9.81f;        //Ä£ÄâÖØÁ¦
-    public IInputProvider[] providers;          //½ÓÊÕ²»Í¬µÄÊäÈë
+    private CharacterController controller;     //è§’è‰²æ§åˆ¶
+    private float gravityValue = -9.81f;        //æ¨¡æ‹Ÿé‡åŠ›
+    public IInputProvider[] providers;          //æ¥æ”¶ä¸åŒçš„è¾“å…¥
 
-    //³õÊ¼»¯controllerºÍproviders
+    //åˆå§‹åŒ–controllerå’Œproviders
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
         providers = GetComponents<IInputProvider>();
     }
 
-    //ÖğÖ¡´¦ÀíÊäÈëºÍ¿ØÖÆ½ÇÉ«ÒÆ¶¯
+    //é€å¸§å¤„ç†è¾“å…¥å’Œæ§åˆ¶è§’è‰²ç§»åŠ¨
     void Update()
     {
         Process();
@@ -26,24 +27,24 @@ public class Controller : MonoBehaviour
     {
         foreach (IInputProvider provider in providers)
         {
-            //´¦ÀíÊäÈëºÍ¿ØÖÆ½ÇÉ«ÒÆ¶¯
+            //å¤„ç†è¾“å…¥å’Œæ§åˆ¶è§’è‰²ç§»åŠ¨
             InputState inputState = provider.GetState();
 
-            //¿ØÖÆ½ÇÉ«µÄÒÆ¶¯
+            //æ§åˆ¶è§’è‰²çš„ç§»åŠ¨
             controller.Move(inputState.movement * Time.deltaTime * Settings.PlayerSpeed);
             controller.Move(new Vector3(0, gravityValue * Time.deltaTime, 0));
         }
     }
 }
 
-//ÃèÊöµ±Ç°ÊäÈë×´Ì¬
+//æè¿°å½“å‰è¾“å…¥çŠ¶æ€
 public interface IInputProvider
 {
     public event Action OnJump;
     public InputState GetState();
 }
 
-//ÃèÊö½ÇÉ«µÄÔË¶¯×´Ì¬
+//æè¿°è§’è‰²çš„è¿åŠ¨çŠ¶æ€
 public struct InputState
 {
     public Vector3 movement;
