@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< Updated upstream
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
-=======
   m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
->>>>>>> Stashed changes
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6551,9 +6547,6 @@ GameObject:
   - component: {fileID: 2069455760}
   - component: {fileID: 2069455761}
   - component: {fileID: 2069455762}
-  - component: {fileID: 2069455764}
-  - component: {fileID: 2069455763}
-  - component: {fileID: 2069455765}
   m_Layer: 0
   m_Name: PlotManager
   m_TagString: Untagged
@@ -6590,8 +6583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartRun: 1
   chapters:
-  - {fileID: 2069455763}
-  - {fileID: 2069455765}
+  - {fileID: 2069455762}
 --- !u!114 &2069455762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6601,47 +6593,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2069455759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< Updated upstream
-  m_Script: {fileID: 11500000, guid: 0bfa018934b103f45a87a84020cd71f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2069455763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069455759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2742605dd08ec4d42815287aa0704ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2069455764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069455759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2742605dd08ec4d42815287aa0704ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2069455765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2069455759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c26317c6595b54fb33d89c9a8482b3, type: 3}
-=======
   m_Script: {fileID: 11500000, guid: 4f9920677aaf55941a884b831e5afb46, type: 3}
->>>>>>> Stashed changes
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2090194630
