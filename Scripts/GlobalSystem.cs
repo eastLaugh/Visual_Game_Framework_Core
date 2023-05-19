@@ -13,12 +13,14 @@ namespace VGF
 {
     public class GlobalSystem
     {
+        
         [RuntimeInitializeOnLoadMethod]
 
         //≥ı ºªØøÚº‹…Ë÷√
         private static void Init()
         {
             Settings.Init();
+            
             //Debug.Log(Settings.language);
         }
 

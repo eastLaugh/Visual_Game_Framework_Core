@@ -45,7 +45,7 @@ namespace WordZone
         public static void Shake()
         {
             Debug.Log("Shake Command Invoked!");
-            Camera.current.transform.DOShakePosition(duration, strength, vibrato, randomness);
+            Camera.main.transform.DOShakePosition(duration, strength, vibrato, randomness);
         }
 
         //设置声音控制器的“摇摆模式”

@@ -16,7 +16,10 @@ public class Msg : UICollection
         base.Awake();
         this.Bean();
     }
-
+    private void OnDestroy()
+    {
+        this.UnBean();
+    }
     //���½������������
     protected override void OnCreate(GameObject newlyCreatedObject)
     {
@@ -37,5 +40,13 @@ public class Msg : UICollection
         gameObject1.transform.SetParent(parent.transform);
         gameObject1.transform.localPosition = new Vector3(0, 0, 0);
         gameObject1.transform.position = postion;
+        gameObject1.GetComponent<Canvas>().sortingOrder=233;
+    }
+
+    protected override GameObject CreatePooledItem()
+    {
+        GameObject gameObject1 = Instantiate(Prefab,transform);
+        OnCreate(gameObject1);
+        return gameObject1;
     }
 }

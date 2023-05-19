@@ -58,7 +58,10 @@ namespace WordZone
         {
             HideAndReady/*Start*/, Rendering, EscapeRendering, WaitUser, Timeline
         };
-
+        private void OnDestroy()
+        {
+            this.UnBean();
+        }
         //表示状态机本身
         private static FSM<EState> fsm = new();
         private Queue<WordPiece> pieces = new();
@@ -103,6 +106,7 @@ namespace WordZone
                 {
                     StopCoroutine(coroutine);
                 }
+                Text.text = "";
                 StartCoroutine(RenderPiece(currentPiece, true));
             });
             fsm.State(EState.WaitUser).OnEnter(() =>
@@ -240,6 +244,15 @@ namespace WordZone
         private void Update()
         {
             fsm.update();
+            ///////////////TODO!!!!!!!!!!!!!!!!!!!!!!!!!
+            if(VGF_Player_2D.Instance != null)
+            {
+                if (State == EState.HideAndReady)
+                    VGF_Player_2D.Instance.Mute = false;
+                else
+                    VGF_Player_2D.Instance.Mute = true;
+            }
+            
         }
 
         //使用GUI绘制用户界面，其中包括一个文本区域和一个按钮，并且显示当前状态

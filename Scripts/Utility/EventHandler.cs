@@ -75,4 +75,11 @@ public class EventHandler
         DoDamage2Player?.Invoke(damage);
     }
 
+    public static event Action<string> OnSkillRelease;
+    public static void CallOnSkillRelease(string name)
+    {
+        OnSkillRelease?.Invoke(name);
+    }
+
+
 }

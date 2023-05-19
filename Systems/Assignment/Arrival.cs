@@ -15,7 +15,8 @@ namespace VGF.Assignment
         new public static Arrival CreateInstance(string nameOfColliderGameObject)
         {
             Arrival arrival = ScriptableObject.CreateInstance<Arrival>();
-            Collider collider = GameObject.Find(nameOfColliderGameObject).GetComponent<Collider>();
+            Collider2D collider = GameObject.Find(nameOfColliderGameObject).GetComponent<Collider2D>();
+            Debug.Log(collider);
             if (!collider)
                 throw new System.Exception($"没有找到{nameOfColliderGameObject}");
             collider.isTrigger = true;

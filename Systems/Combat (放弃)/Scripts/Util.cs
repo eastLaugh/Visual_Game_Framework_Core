@@ -92,7 +92,7 @@ public class FSM<T> where T : struct, Enum
             CurrentCustomState?.Exit();
             currentState = t;
             CurrentCustomState = s;
-            CurrentCustomState.Enter();
+            CurrentCustomState?.Enter();
         }
         else
         {

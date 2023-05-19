@@ -31,3 +31,13 @@ public class InventoryItem
     public int itemID;
     public int amount;
 }
+
+[System.Serializable]
+public class Skill
+{
+    public string Name;
+    public string Description;
+    public float DurationTime;
+    public bool Unlocked;
+    public Sprite sprite;
+}

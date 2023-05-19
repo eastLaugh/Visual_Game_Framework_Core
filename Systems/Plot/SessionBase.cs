@@ -84,7 +84,7 @@ namespace VGF.Plot
         #endregion
 
         #region 2.场景系统
-        [Autowired]
+        [SerializeField]
         private SceneLoader sceneLoader;
 
         //切换到指定的场景
@@ -103,7 +103,15 @@ namespace VGF.Plot
         //绑定指定场景加载完后的事件，即绑定切换场景后执行的行为逻辑
         public void BindSceneEvent(string name, Action<SceneLoader.Msg> action)
         {
+            try
+            {
             sceneLoader.BindSceneEvent(name, action);
+
+            }
+            catch
+            {
+
+            }
         }
 
         //方便调用前一个函数
@@ -130,10 +138,13 @@ namespace VGF.Plot
             }
 
             //给角色添加互动组件并注册一个动作
-            public CharacterChainOperator Interactive(Action action)
+            public CharacterChainOperator Interactive(Action action,bool isDefault = false)
             {
                 Interactive interactive = gameObject.GetComponent<Interactive>() ?? gameObject.AddComponent<Interactive>();
-                interactive.RegisterAction(action);
+                if (!isDefault)
+                    interactive.RegisterAction(action);
+                else
+                    interactive.RegisterDefaultAction(action);
                 return this;
             }
 

@@ -44,7 +44,7 @@ public abstract class UICollection : MonoBehaviour
     }
 
     //创建对象池中的对象（实例化对象、设定父物体和执行用户自定义逻辑）
-    private GameObject CreatePooledItem()
+    protected virtual GameObject CreatePooledItem()
     {
         GameObject gameObject1 = Instantiate(Prefab, Canvas.transform);
         OnCreate(gameObject1);

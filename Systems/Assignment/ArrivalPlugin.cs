@@ -17,4 +17,12 @@ public class ArrivalPlugin : MonoBehaviour
             arrival.Ticked();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            arrival.Ticked();
+        }
+    }
 }

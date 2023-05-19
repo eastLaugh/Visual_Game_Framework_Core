@@ -44,7 +44,7 @@ public class Say : MonoBehaviour, ICharacter
     internal void SayMsg(string text)
     {
         //一般来说，Msg应该显示在碰撞体的上方1/5间隔处
-        Collider col = GetComponent<Collider>();            //获取物体的碰撞体
+        Collider2D col = GetComponent<Collider2D>();            //获取物体的碰撞体
         
         if (col == null)
         {

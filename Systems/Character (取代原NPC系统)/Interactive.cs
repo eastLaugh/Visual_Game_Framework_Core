@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 using Cinemachine;          //相机功能库
+using VGF.UI;
 
 
 //确保该脚本所挂载的游戏对象有 Character 和 Collider 组件
@@ -20,12 +21,14 @@ public class Interactive : MonoBehaviour, ICharacter
     private ICinemachineCamera currentCamera => FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera;
 
     private Queue<UnityAction> Actions = new();
+    private UnityAction defaultAction;
 
     private bool @in;
 
     //当角色进入与Interactive相关的碰撞器时，会将相机的跟踪目标设为当前Interactive对象
     public void OnPlayerEnter()
     {
+        HintLoader.Instance.HintOn("按E互动");
         @in = true;
         try
         {
@@ -39,10 +42,11 @@ public class Interactive : MonoBehaviour, ICharacter
 
     private void Update()
     {
+       
         //按下"E"键时触发
         if (@in && Input.GetKeyDown(KeyCode.E))
         {
-
+            HintLoader.Instance.HintOff();
 
             //
             GetComponent<Character>().InteractAllCom();
@@ -58,6 +62,7 @@ public class Interactive : MonoBehaviour, ICharacter
     public void OnPlayerExit()
     {
         @in = false;
+        HintLoader.Instance.HintOff();
         try
         {
             currentCamera.LookAt = Character.Player.transform;
@@ -73,6 +78,10 @@ public class Interactive : MonoBehaviour, ICharacter
     {
         Actions.Enqueue(new UnityAction(action));
     }
+    internal void RegisterDefaultAction(Action action)
+    {
+        defaultAction = new UnityAction(action);
+    }
 
     //尝试取出队列中的元素并执行该元素所代表的操作
     public void OnInteract()
@@ -80,6 +89,10 @@ public class Interactive : MonoBehaviour, ICharacter
         if (Actions.TryDequeue(out UnityAction result))
         {
             result.Invoke();
+        }
+        else
+        {
+            defaultAction?.Invoke();
         }
     }
 }
