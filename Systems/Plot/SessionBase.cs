@@ -230,6 +230,27 @@ namespace VGF.Plot
         #endregion
 
 
+        #region 8.技能系统
+        protected void SetSkillAvaliable(string name,bool isAvaliable)
+        {
+            SkillSystem.SetSkillAvailable(name,isAvaliable);    
+        }
+        #endregion
+        #region
+        protected void Arrival(string name, Action<AssignmentFinishMsg> action)
+        {
+            Arrival arrival = Assignment.Arrival.CreateInstance(name);
+            arrival.OnAssignmentFinished += action;
+            arrival.Bean();
+        }
+
+        protected void AssignItem(int ItemID,int itemAmount,bool isTaken,Action<AssignmentFinishMsg> finEvent)
+        {
+            InventoryAssignment inventoryAssignment = InventoryAssignment.CreatAssignment(ItemID, itemAmount, isTaken);
+            inventoryAssignment.OnAssignmentFinished += finEvent;
+            inventoryAssignment.Bean();
+        }
+        #endregion
         /********************************其他公共函数*********************************/
         //1.等待一定时间后执行指定的回调函数
         /// <summary>
@@ -249,12 +270,7 @@ namespace VGF.Plot
         }
 
         //2.分配任务和监视任务的进度
-        protected void Arrival(string name, Action<AssignmentFinishMsg> action)
-        {
-            Arrival arrival = Assignment.Arrival.CreateInstance(name);
-            arrival.OnAssignmentFinished += action;
-            arrival.Bean();
-        }
+        
 
         //3.把角色移动到指定的游戏对象位置（传送）
         protected void MoveTo(string GameObjectName)

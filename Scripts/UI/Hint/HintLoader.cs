@@ -37,10 +37,11 @@ namespace VGF.UI
         /// <summary>
         /// 关闭Hint面板
         /// </summary>
-        public void HintOff()                       //会播放隐藏提示信息面板的动画
+        public void HintOff(string message)                       //会播放隐藏提示信息面板的动画
         {
             //hintText.text = string.Empty;
-            hintAnimator.SetTrigger("Fade");
+            if (hintText.text == message)
+                hintAnimator.SetTrigger("Fade");
             //hintImage.gameObject.SetActive(false);
         }
 

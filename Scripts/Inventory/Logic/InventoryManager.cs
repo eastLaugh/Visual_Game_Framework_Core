@@ -51,7 +51,20 @@ namespace VGF.Inventory
             EventHandler.CallUpdateInventoryUI(InventoryLocation.player, playerBag_SO.itemList);
             return true;
         }
+        public bool ReduceItem(int ID,int num)
+        {
+            for (int i = 0; i < playerBag_SO.itemList.Count; i++)
+            {
+                if (playerBag_SO.itemList[i].itemID == ID && playerBag_SO.itemList[i].amount >= num)
+                {
+                    playerBag_SO.itemList[i].amount -= num;
+                    EventHandler.CallUpdateInventoryUI(InventoryLocation.player, playerBag_SO.itemList);
+                    return true;
+                }
+            }
+            return false;
 
+        }
         //在背包中查找是否存在指定数量的物品，存在则返回true，不存在返回false
         public bool SearchItem(int ID, int num)
         {

@@ -118,6 +118,7 @@ public class InventoryUI : MonoBehaviour
     void OpenInventoryUI()
     {
         InventoryPanel.SetActive(true);
+        Time.timeScale = 0f;
         isOpen = true;
     }
     
@@ -125,6 +126,7 @@ public class InventoryUI : MonoBehaviour
     void CloseInventoryUI()
     {
         InventoryPanel.SetActive(false);
+        Time.timeScale = 1f;
         isOpen = false;
     }
 }

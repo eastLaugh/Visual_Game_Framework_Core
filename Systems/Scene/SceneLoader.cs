@@ -97,7 +97,7 @@ namespace VGF.SceneSystem
             AfterSceneLoaded = null;
             yield break;
 
-            Autumn.Autowired();
+            //Autumn.Autowired();
 
         }
 

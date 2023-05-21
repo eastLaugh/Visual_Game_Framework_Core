@@ -39,5 +39,6 @@ public class Skill
     public string Description;
     public float DurationTime;
     public bool Unlocked;
+    public bool Avaliable;
     public Sprite sprite;
 }

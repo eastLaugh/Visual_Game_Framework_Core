@@ -46,7 +46,7 @@ public class Interactive : MonoBehaviour, ICharacter
         //按下"E"键时触发
         if (@in && Input.GetKeyDown(KeyCode.E))
         {
-            HintLoader.Instance.HintOff();
+            HintLoader.Instance.HintOff("按E互动");
 
             //
             GetComponent<Character>().InteractAllCom();
@@ -62,7 +62,7 @@ public class Interactive : MonoBehaviour, ICharacter
     public void OnPlayerExit()
     {
         @in = false;
-        HintLoader.Instance.HintOff();
+        HintLoader.Instance.HintOff("按E互动");
         try
         {
             currentCamera.LookAt = Character.Player.transform;

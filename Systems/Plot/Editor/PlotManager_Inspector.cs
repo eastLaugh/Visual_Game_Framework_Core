@@ -17,11 +17,12 @@ namespace VGF.Plot
             base.OnInspectorGUI();
 
             //当用户按下"Run"按钮后，调用PlotManager的"Run()"函数，索引当前的情节；否则直接报错
-            if (GUILayout.Button(new GUIContent("Run")))
+            if (GUILayout.Button(new GUIContent("Start Game")))
             {
                 if (Application.isPlaying)
                 {
-                    (target as PlotManager).Run(PlotManager.Instance.currentIndex);
+                    GlobalSystem.NewGame();
+                    //EventHandler.CallNewGame();
                 }
                 else
                 {

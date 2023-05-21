@@ -25,9 +25,10 @@ namespace VGF.Assignment
         //将当前任务标记为已完成，并且触发任务完成的事件
         public void Ticked()
         {
-            this.UnBean();
+            
             Finish();
             OnAssignmentFinished?.Invoke(new AssignmentFinishMsg());
+            this.UnBean();
         }
 
         //逐帧执行
