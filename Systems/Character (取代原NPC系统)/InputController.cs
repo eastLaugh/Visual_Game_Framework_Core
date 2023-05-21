@@ -5,7 +5,7 @@ using UnityEngine;
 
 //该类用于控制角色移动
 [RequireComponent(typeof(Rigidbody2D))]
-public class Controller : MonoBehaviour
+public class InputController : MonoBehaviour
 {
     private Rigidbody2D rb;     //角色控制
     private float gravityValue = -9.81f;        //模拟重力
@@ -14,7 +14,7 @@ public class Controller : MonoBehaviour
     public float Speed;
 
     //初始化controller和providers
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         providers = GetComponents<IInputProvider>();
@@ -55,7 +55,7 @@ public class Controller : MonoBehaviour
 //描述当前输入状态
 public interface IInputProvider
 {
-    public event Action OnJump;
+    //public event Action OnJump;
     public InputState GetState();
 }
 

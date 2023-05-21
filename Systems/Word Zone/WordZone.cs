@@ -244,8 +244,9 @@ namespace WordZone
         private void Update()
         {
             fsm.update();
+            
             ///////////////TODO!!!!!!!!!!!!!!!!!!!!!!!!!
-            if(VGF_Player_2D.Instance != null)
+            if(VGF_Player_2D.Instance!=null)
             {
                 if (State == EState.HideAndReady)
                     VGF_Player_2D.Instance.Mute = false;
