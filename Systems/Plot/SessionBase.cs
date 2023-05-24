@@ -105,7 +105,7 @@ namespace VGF.Plot
         {
             try
             {
-            sceneLoader.BindSceneEvent(name, action);
+                sceneLoader.BindSceneEvent(name, action);
 
             }
             catch
@@ -135,10 +135,13 @@ namespace VGF.Plot
                 this.name = name;
                 gameObject = GameObject.Find(name);
                 character = gameObject.GetComponent<Character>() ?? gameObject.AddComponent<Character>();
+
+                tmps = new();
             }
 
+            public List<(string, Action)> tmps;
             //给角色添加互动组件并注册一个动作
-            public CharacterChainOperator Interactive(Action action,bool isDefault = false)
+            public CharacterChainOperator Interactive(Action action, bool isDefault = false)
             {
                 Interactive interactive = gameObject.GetComponent<Interactive>() ?? gameObject.AddComponent<Interactive>();
                 if (!isDefault)
@@ -155,13 +158,36 @@ namespace VGF.Plot
                 say.SayMsg(text);
                 return this;
             }
-            
+
             [Obsolete]  //操纵游戏角色
             public CharacterChainOperator Pool(Action action, float rate)
             {
                 Pool pool = gameObject.GetComponent<Pool>() ?? gameObject.AddComponent<Pool>();
                 return this;
             }
+
+
+            public CharacterChainOperator Opt(string text, Action action = null)
+            {
+                tmps.Add((text, action));
+                ApplyOpt();
+                return this;
+            }
+            public CharacterChainOperator Opt()
+            {
+                tmps.Clear();
+                ApplyOpt();
+                return this;
+            }
+            
+            void ApplyOpt(){
+                string[] texts = this.tmps.Select(s=>s.Item1).ToArray();
+                var tmpstmp = this.tmps;
+                OptZone.Show(gameObject.transform,texts,i=>{
+                    tmpstmp[i].Item2?.Invoke();
+                });
+            }
+
         }
 
         //创建一个角色对象，方便角色操作
@@ -231,9 +257,9 @@ namespace VGF.Plot
 
 
         #region 8.技能系统
-        protected void SetSkillAvaliable(string name,bool isAvaliable)
+        protected void SetSkillAvaliable(string name, bool isAvaliable)
         {
-            SkillSystem.SetSkillAvailable(name,isAvaliable);    
+            SkillSystem.SetSkillAvailable(name, isAvaliable);
         }
         #endregion
         #region
@@ -244,7 +270,7 @@ namespace VGF.Plot
             arrival.Bean();
         }
 
-        protected void AssignItem(int ItemID,int itemAmount,bool isTaken,Action<AssignmentFinishMsg> finEvent)
+        protected void AssignItem(int ItemID, int itemAmount, bool isTaken, Action<AssignmentFinishMsg> finEvent)
         {
             InventoryAssignment inventoryAssignment = InventoryAssignment.CreatAssignment(ItemID, itemAmount, isTaken);
             inventoryAssignment.OnAssignmentFinished += finEvent;
@@ -270,12 +296,20 @@ namespace VGF.Plot
         }
 
         //2.分配任务和监视任务的进度
-        
+
 
         //3.把角色移动到指定的游戏对象位置（传送）
         protected void MoveTo(string GameObjectName)
         {
             Player.instance.transform.position = GameObject.Find(GameObjectName).transform.position;
+        }
+
+
+
+
+        protected void Opt()
+        {
+
         }
     }
 }
