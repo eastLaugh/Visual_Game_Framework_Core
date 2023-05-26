@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 using System;
-using VGF.Inventory;    //ÒıÓÃ±¾¿ò¼ÜµÄ±³°üÏµÍ³
+using VGF.Inventory;    //å¼•ç”¨æœ¬æ¡†æ¶çš„èƒŒåŒ…ç³»ç»Ÿ
 
 
-//ÔÚÓÎÏ·ÔËĞĞÊ±´¥·¢ÌØ¶¨µÄÊÂ¼ş
+//åœ¨æ¸¸æˆè¿è¡Œæ—¶è§¦å‘ç‰¹å®šçš„äº‹ä»¶
 public class EventHandler
 {
-    //¶¨ÒåÒ»¸öÎ¯ÍĞ£¬ÓÃÓÚ¾çÇé²¥·Å
+    //å®šä¹‰ä¸€ä¸ªå§”æ‰˜ï¼Œç”¨äºå‰§æƒ…æ’­æ”¾
     public delegate void PlayTimelineDelegate(string name, Action action);
-    //¶¨ÒåÒ»¸öÎ¯ÍĞ×Ö¶Î£¬ÓÃÓÚ´¥·¢¾çÇéµÄ²¥·Å
+    //å®šä¹‰ä¸€ä¸ªå§”æ‰˜å­—æ®µï¼Œç”¨äºè§¦å‘å‰§æƒ…çš„æ’­æ”¾
     public static PlayTimelineDelegate PlayTimeline;
-    //´«ÈënameºÍaction£¬´¥·¢¾çÇé²¥·ÅµÄÊÂ¼ş
+    //ä¼ å…¥nameå’Œactionï¼Œè§¦å‘å‰§æƒ…æ’­æ”¾çš„äº‹ä»¶
     public static void PlayTimelineInvoke(string name, Action action = null)
     {
         PlayTimeline?.Invoke(name, action);
     }
 
-    //´¥·¢²¢²¥·ÅÒôÀÖ
+    //è§¦å‘å¹¶æ’­æ”¾éŸ³ä¹
     public static Action<string> PlayMusic;
     public static void PlayMusicInvoke(string name)
     {
@@ -32,25 +32,25 @@ public class EventHandler
     //    OnTimelinePlay?.Invoke();
     // }
     
-    //ÓÃÓÚ¸üĞÂÎïÆ·Çåµ¥µÄ½çÃæÏÔÊ¾
+    //ç”¨äºæ›´æ–°ç‰©å“æ¸…å•çš„ç•Œé¢æ˜¾ç¤º
     public static event Action<InventoryLocation, List<InventoryItem>> UpdateInventoryUI;
-    //´¥·¢ÎïÆ·Çåµ¥½çÃæÏÔÊ¾µÄ¸üĞÂ
+    //è§¦å‘ç‰©å“æ¸…å•ç•Œé¢æ˜¾ç¤ºçš„æ›´æ–°
     public static void CallUpdateInventoryUI(InventoryLocation location, List<InventoryItem> list)
     {
         UpdateInventoryUI?.Invoke(location, list);
     }
 
-    //ÓÃÓÚ¸Ä±äÎïÆ·À¸±»Ñ¡ÖĞÎïÆ·µÄ×´Ì¬
+    //ç”¨äºæ”¹å˜ç‰©å“æ è¢«é€‰ä¸­ç‰©å“çš„çŠ¶æ€
     public static event Action<SlotUI> ChangeItemBarSelected;
-    //´¥·¢ÎïÆ·À¸±»Ñ¡ÖĞµÄÎïÆ·²Û×´Ì¬µÄ¸ü¸Ä
+    //è§¦å‘ç‰©å“æ è¢«é€‰ä¸­çš„ç‰©å“æ§½çŠ¶æ€çš„æ›´æ”¹
     public static void CallChangeItemBarSelected(SlotUI slotUI)
     {
         ChangeItemBarSelected?.Invoke(slotUI);
     }
 
-    //ÓÃÓÚÕÂ½ÚµÄÔËĞĞ
+    //ç”¨äºç« èŠ‚çš„è¿è¡Œ
     public static event Action<int> RunChapter;
-    //ÓÃÓÚ´¥·¢ÔËĞĞÕÂ½ÚµÄÊÂ¼ş
+    //ç”¨äºè§¦å‘è¿è¡Œç« èŠ‚çš„äº‹ä»¶
     public static void CallRunChapter(int index)
     {
         //Debug.Log("RunChapter");

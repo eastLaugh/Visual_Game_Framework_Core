@@ -26,10 +26,20 @@ public class CaptionZone : MonoBehaviour
 
     }
 
+
     private void Start()
     {
         //个性化开发
+        Float(Vector3.zero,"1");
+        Float(Vector3.zero,"1");
+        Float(Vector3.zero,"1");
+        Float(Vector3.zero,"1");
+        Float(Vector3.zero,"1");
+        Float(Vector3.zero,"1");
+        Float(Vector3.zero,"1");
+        Float(Vector3.zero,"1");
     }
+
 
     //创建新对象作为对象池的元素
     private TextMeshProUGUI CreatePooledItem()

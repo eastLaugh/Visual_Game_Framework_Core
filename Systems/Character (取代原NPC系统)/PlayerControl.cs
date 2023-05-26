@@ -5,17 +5,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-//¸ÃÀàÓÃÓÚ¿ØÖÆ½ÇÉ«ĞĞÎª
+//è¯¥ç±»ç”¨äºæ§åˆ¶è§’è‰²è¡Œä¸º
 public class PlayerControl : MonoBehaviour, IInputProvider
 {
     public event Action OnJump;
 
     private void Update()
     {
-        //¶ÁÈ¡Íæ¼ÒµÄ°´¼üÊäÈë
+        //è¯»å–ç©å®¶çš„æŒ‰é”®è¾“å…¥
         inputState.movement = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
 
-        //°´ÏÂ¡°W¡¢A¡¢S¡¢D¡±°´¼üÊ±´¥·¢ÏàÓ¦µÄ²Ù×÷
+        //æŒ‰ä¸‹â€œWã€Aã€Sã€Dâ€æŒ‰é”®æ—¶è§¦å‘ç›¸åº”çš„æ“ä½œ
         if (Input.GetKeyDown(KeyCode.W))
         {
             //
@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour, IInputProvider
         }
     }
 
-    //»ñÈ¡ÊäÈë×´Ì¬
+    //è·å–è¾“å…¥çŠ¶æ€
     InputState inputState;
     public InputState GetState()
     {

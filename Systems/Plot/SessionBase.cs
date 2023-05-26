@@ -198,9 +198,9 @@ namespace VGF.Plot
 
         [Autowired] //向游戏对话框中添加文字
         private static WordZone.WordZone wordZone;
-        public static void Word(string text)
+        public static void Word(string text,Action callback=null)
         {
-            wordZone.ParseAndEnque(text);
+            wordZone.ParseAndEnque(text,callback);
         }
         #endregion
 

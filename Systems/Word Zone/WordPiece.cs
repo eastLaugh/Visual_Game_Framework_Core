@@ -34,6 +34,7 @@ namespace WordZone
 
         public object Current => throw new NotImplementedException();
 
+        public Action OnFinish;
         private WordPiece()
         {
             //

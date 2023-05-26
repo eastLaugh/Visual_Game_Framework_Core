@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;                   
+using UnityEngine;
 using DG.Tweening;
 using AutumnFramework;
 using UnityEngine.UI;
@@ -28,12 +28,29 @@ namespace WordZone
         //初始化动画和UI的变量
         private void Awake()
         {
+
             this.Bean();
             sequence = DOTween.Sequence()
                 .Append(rectTransform.DOAnchorPosY(0, 0.2f).From(new Vector2(0, -100f)))
                 .Join(WordCanvasGroup.DOFade(0f, 0f))
                 .Join(WordCanvasGroup.DOFade(1, 0.2f))
                 .SetAutoKill(false);
+        }
+
+
+        private void OnEnable()
+        {
+            EventHandler.PlayerDie += OnPlayerDie;
+
+        }
+        private void OnDisable()
+        {
+            EventHandler.PlayerDie -= OnPlayerDie;
+
+        }
+        private void OnPlayerDie()
+        {
+            pieces.Clear();
         }
 
         //添加动画效果
@@ -112,6 +129,9 @@ namespace WordZone
             fsm.State(EState.WaitUser).OnEnter(() =>
             {
                 sequence.Complete();
+            }).OnExit(() =>
+            {
+                currentPiece.OnFinish?.Invoke();
             });
 
             fsm.ChangeState(EState.HideAndReady);
@@ -200,18 +220,20 @@ namespace WordZone
             }
         }
         #endregion
-        
+
         private void Start()
         {
             FSM();
         }
 
         //将文本解析成单词，并将其存储到队列中
-        public void ParseAndEnque(string unparsedText)
+        public void ParseAndEnque(string unparsedText, Action callback = null)
         {
-            pieces.Enqueue(WordPiece.Parser(unparsedText));
+            WordPiece wordPiece = WordPiece.Parser(unparsedText);
+            wordPiece.OnFinish = callback;
+            pieces.Enqueue(wordPiece);
         }
-        
+
         //点击区域
         public void OnClickZone()
         {
@@ -244,16 +266,16 @@ namespace WordZone
         private void Update()
         {
             fsm.update();
-            
+
             ///////////////TODO!!!!!!!!!!!!!!!!!!!!!!!!!
-            if(VGF_Player_2D.Instance!=null)
+            if (VGF_Player_2D.Instance != null)
             {
                 if (State == EState.HideAndReady)
                     VGF_Player_2D.Instance.Mute = false;
                 else
                     VGF_Player_2D.Instance.Mute = true;
             }
-            
+
         }
 
         //使用GUI绘制用户界面，其中包括一个文本区域和一个按钮，并且显示当前状态
