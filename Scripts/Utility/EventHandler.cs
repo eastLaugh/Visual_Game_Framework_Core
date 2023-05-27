@@ -31,7 +31,7 @@ public class EventHandler
     // {
     //    OnTimelinePlay?.Invoke();
     // }
-    
+
     //用于更新物品清单的界面显示
     public static event Action<InventoryLocation, List<InventoryItem>> UpdateInventoryUI;
     //触发物品清单界面显示的更新
@@ -48,45 +48,12 @@ public class EventHandler
         ChangeItemBarSelected?.Invoke(slotUI);
     }
 
-    public static event Action<AssignmentBar> ChangeAssignmentBarSelected;
-    //������Ʒ����ѡ�е���Ʒ��״̬�ĸ���
-    public static void CallChangeAssignmentBarSelected(AssignmentBar BarUI)
-    {
-        ChangeAssignmentBarSelected?.Invoke(BarUI);
-    }
-
-    //�����½ڵ�����
+    //用于章节的运行
     public static event Action<int> RunChapter;
     //用于触发运行章节的事件
     public static void CallRunChapter(int index)
     {
-        //Debug.Log("RunChapter");
+        Debug.Log("RunChapter");
         RunChapter?.Invoke(index);
     }
-
-    public static event Action PlayerDie;
-    public static void CallPlayerDie()
-    {
-        PlayerDie?.Invoke();
-    }
-
-    public static event Action NewGame;
-    public static void CallNewGame()
-    {
-        NewGame?.Invoke();
-    }
-
-    public static event Action<int> DoDamage2Player;
-    public static void CallDoDamage2Player(int damage)
-    {
-        DoDamage2Player?.Invoke(damage);
-    }
-
-    //public static event Action<string> OnSkillRelease;
-    //public static void CallOnSkillRelease(string name)
-    //{
-    //    OnSkillRelease?.Invoke(name);
-    //}
-
-
 }

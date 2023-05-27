@@ -33,6 +33,7 @@ public class InventoryItem
 }
 
 [System.Serializable]
+//记录技能指标
 public class Skill
 {
     public string Name;

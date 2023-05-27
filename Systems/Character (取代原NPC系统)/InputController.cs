@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class InputController : MonoBehaviour
 {
-    private Rigidbody2D rb;     //角色控制
+    private Rigidbody2D rb;                     //角色控制
     private float gravityValue = -9.81f;        //模拟重力
     public IInputProvider[] providers;          //接收不同的输入
     public Animator animator;

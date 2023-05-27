@@ -52,6 +52,7 @@ public class Character : MonoBehaviour, ICharacter
         }
     }
 
+    //角色退出实现的功能，在后面可以个性化开发
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<Character>()?.Type == CharacterType.Player)
