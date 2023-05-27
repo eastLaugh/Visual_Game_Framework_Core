@@ -48,7 +48,14 @@ public class EventHandler
         ChangeItemBarSelected?.Invoke(slotUI);
     }
 
-    //用于章节的运行
+    public static event Action<AssignmentBar> ChangeAssignmentBarSelected;
+    //������Ʒ����ѡ�е���Ʒ��״̬�ĸ���
+    public static void CallChangeAssignmentBarSelected(AssignmentBar BarUI)
+    {
+        ChangeAssignmentBarSelected?.Invoke(BarUI);
+    }
+
+    //�����½ڵ�����
     public static event Action<int> RunChapter;
     //用于触发运行章节的事件
     public static void CallRunChapter(int index)

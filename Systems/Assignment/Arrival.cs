@@ -7,7 +7,7 @@ namespace VGF.Assignment
 {
     //在Unity编辑器中创建该类的实例
     [CreateAssetMenu(menuName = "Visual Game Framework/Assignment/Arrival", order = 0)]
-    public class Arrival : Assignment, IDisposable
+    public class Arrival : Assignment, IDisposable 
     {
         private ArrivalPlugin arrivalPlugin;
 
