@@ -51,7 +51,7 @@ namespace VGF.Inventory
             EventHandler.CallUpdateInventoryUI(InventoryLocation.player, playerBag_SO.itemList);
             return true;
         }
-        public bool ReduceItem(int ID,int num)
+        public bool ReduceItem(int ID,int num)          //将指定数量的物品移除背包（作为出口函数），用bool量检测添加过程（ID和num）
         {
             for (int i = 0; i < playerBag_SO.itemList.Count; i++)
             {
