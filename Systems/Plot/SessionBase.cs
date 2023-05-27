@@ -255,13 +255,13 @@ namespace VGF.Plot
         }
         #endregion
 
-
         #region 8.技能系统
         protected void SetSkillAvaliable(string name, bool isAvaliable)
         {
             SkillSystem.SetSkillAvailable(name, isAvaliable);
         }
         #endregion
+
         #region
         protected void Arrival(string name, Action<AssignmentFinishMsg> action)
         {
@@ -277,6 +277,7 @@ namespace VGF.Plot
             inventoryAssignment.Bean();
         }
         #endregion
+
         /********************************其他公共函数*********************************/
         //1.等待一定时间后执行指定的回调函数
         /// <summary>
