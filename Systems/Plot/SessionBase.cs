@@ -262,7 +262,7 @@ namespace VGF.Plot
         }
         #endregion
 
-        #region
+        #region 9.任务系统
         protected void Arrival(string name, Action<AssignmentFinishMsg> action)
         {
             Arrival arrival = Assignment.Arrival.CreateInstance(name);
