@@ -56,4 +56,27 @@ public class EventHandler
         Debug.Log("RunChapter");
         RunChapter?.Invoke(index);
     }
+
+    public static event Action NewGame;
+    public static void CallNewGame()
+    {
+        NewGame?.Invoke();
+    }
+
+    public static event Action PlayerDie;
+    public static void CallPlayerDie()
+    {
+        PlayerDie?.Invoke();
+    }
+
+    public static event Action<int> DoDamage2Player;
+    public static void CallDoDamage2Player(int damage)
+    {
+        DoDamage2Player?.Invoke(damage);
+    }
+    public static event Action<AssignmentBar> ChangeAssignmentBarSelected;
+    public static void CallChangeAssignmentBarSelected(AssignmentBar assignmentBar)
+    {
+        ChangeAssignmentBarSelected?.Invoke(assignmentBar);
+    }
 }
