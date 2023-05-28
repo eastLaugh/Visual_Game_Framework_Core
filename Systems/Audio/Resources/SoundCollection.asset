@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SoundCollection
   m_EditorClassIdentifier: 
   soundDetails:
-  - SoundName: demo1
-    SoundClip: {fileID: 8300000, guid: 47441c0a478e6a24a81ea4715a0d802a, type: 3}
-    SoundPitchMin: 0.52
+  - SoundName: BGM1
+    SoundClip: {fileID: 8300000, guid: f2014d73187b7104b88b51d3230fa334, type: 3}
+    SoundPitchMin: 0.56
     SoundPitchMax: 1.021
-    SoundVolume: 0
+    SoundVolume: 0.388

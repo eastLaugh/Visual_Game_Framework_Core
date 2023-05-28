@@ -26,7 +26,7 @@ public class Settings
         fullScreen = FullScreen.Yes;
         int num = (int)language;
         
-        //语言设置暂时置空，可供个性化更改开发
+        
         switch (num)
         {
             case 0:LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._chineseLocale); break;
@@ -49,6 +49,7 @@ public class Settings
         if (name == "FullScreen")
         {
             fullScreen = (FullScreen)num;
+            SoundManager.Instance.PlaySound(Globals.Button);
             switch (num)
             {
                 case 0: Screen.fullScreenMode = FullScreenMode.FullScreenWindow; Debug.Log(fullScreen); break; //Yes
@@ -58,6 +59,7 @@ public class Settings
         else if (name == "Resolution")
         {
             resolution = (Resolution)num;
+            SoundManager.Instance.PlaySound(Globals.Button);
             switch (num)
             {
                 case 0: Screen.SetResolution(1024, 768, Screen.fullScreen); break;  //1024x768
@@ -68,6 +70,7 @@ public class Settings
         else if (name == "Language")
         {
             language = (Language)num;
+            SoundManager.Instance.PlaySound(Globals.Button);
             switch (num)
             {
                  case 0: LocalizationSettings.Instance.SetSelectedLocale(Autumn.Harvest<Localization>()._chineseLocale); break;  //zh-cn
@@ -119,4 +122,6 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
         if (_instance == (T)this)
             _instance = null;
     }
+
+
 }

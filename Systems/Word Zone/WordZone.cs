@@ -212,6 +212,8 @@ namespace WordZone
                         inXMLElement = false;
                         break;
                 }
+                //打字的声音
+                SoundManager.Instance.PlaySound(Globals.Type);
                 text.text += take[i];
                 if (!inXMLElement)
                 {
