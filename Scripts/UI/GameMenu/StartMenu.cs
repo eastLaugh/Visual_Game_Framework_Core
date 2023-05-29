@@ -14,6 +14,7 @@ namespace VGF.SceneSystem
         public GameObject InfoCanvas;       //存储一个游戏对象（Canvas）
         public GameObject SettingCanvas;    //存储设置面板Canvas游戏对象
         private Canvas MainCanvas;          //存储当前脚本所挂载的游戏对象的 Canvas 组件
+        public GameObject NamePanel;
 
         //初始化场景设置
         public void Start()
@@ -34,8 +35,12 @@ namespace VGF.SceneSystem
         //点击"新游戏"时触发新游戏的脚本
         public void BtnNewStory()
         {
+<<<<<<< Updated upstream
             SoundManager.Instance.PlaySound(Globals.Button);
             GlobalSystem.NewGame();
+=======
+           NamePanel.SetActive(true);
+>>>>>>> Stashed changes
         }
 
         //点击"退出游戏"按钮时触发退出程序的脚本

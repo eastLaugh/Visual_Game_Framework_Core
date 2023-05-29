@@ -134,6 +134,7 @@ namespace VGF.Plot
             {
                 this.name = name;
                 gameObject = GameObject.Find(name);
+                Debug.Log(gameObject);
                 character = gameObject.GetComponent<Character>() ?? gameObject.AddComponent<Character>();
 
                 tmps = new();
@@ -183,7 +184,7 @@ namespace VGF.Plot
             void ApplyOpt(){
                 string[] texts = this.tmps.Select(s=>s.Item1).ToArray();
                 var tmpstmp = this.tmps;
-                OptZone.Show(gameObject.transform,texts,i=>{
+                OptZone.Show(gameObject.transform.position,texts,i=>{
                     tmpstmp[i].Item2?.Invoke();
                 });
             }
@@ -198,8 +199,9 @@ namespace VGF.Plot
 
         [Autowired] //向游戏对话框中添加文字
         private static WordZone.WordZone wordZone;
-        public static void Word(string text,Action callback=null)
+        public static void Word(string text,string name = null, Action callback=null)
         {
+            wordZone.ShowName(name);
             wordZone.ParseAndEnque(text,callback);
         }
         #endregion
@@ -261,18 +263,23 @@ namespace VGF.Plot
             SkillSystem.SetSkillAvailable(name, isAvaliable);
         }
         #endregion
+<<<<<<< Updated upstream
 
         #region 9.任务系统
         protected void Arrival(string name, Action<AssignmentFinishMsg> action)
+=======
+        #region
+        protected void Arrival(string name, Action<AssignmentFinishMsg> action,string nameOfAssignment,string description)
+>>>>>>> Stashed changes
         {
-            Arrival arrival = Assignment.Arrival.CreateInstance(name);
+            Arrival arrival = Assignment.Arrival.CreateInstance(name,nameOfAssignment,description);
             arrival.OnAssignmentFinished += action;
             arrival.Bean();
         }
 
-        protected void AssignItem(int ItemID, int itemAmount, bool isTaken, Action<AssignmentFinishMsg> finEvent)
+        protected void AssignItem(int ItemID, int itemAmount, bool isTaken, Action<AssignmentFinishMsg> finEvent,string name,string description)
         {
-            InventoryAssignment inventoryAssignment = InventoryAssignment.CreatAssignment(ItemID, itemAmount, isTaken);
+            InventoryAssignment inventoryAssignment = InventoryAssignment.CreatAssignment(ItemID, itemAmount, isTaken,name,description);
             inventoryAssignment.OnAssignmentFinished += finEvent;
             inventoryAssignment.Bean();
         }

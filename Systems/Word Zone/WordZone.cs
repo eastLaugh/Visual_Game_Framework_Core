@@ -22,8 +22,11 @@ namespace WordZone
         public TMP_Text Text;
         public CanvasGroup WordCanvasGroup;
         public RectTransform rectTransform;
+        public GameObject NameZone;
         public Button button;
+        public Text NPCName;
         private Sequence sequence;
+        private string currentName;
 
         //初始化动画和UI的变量
         private void Awake()
@@ -35,6 +38,26 @@ namespace WordZone
                 .Join(WordCanvasGroup.DOFade(0f, 0f))
                 .Join(WordCanvasGroup.DOFade(1, 0.2f))
                 .SetAutoKill(false);
+        }
+        public void ShowName(string name = null)
+        {
+            if (name == null)
+            {
+                if (currentName == "NULL") return;
+                NameZone.SetActive(true);
+                NPCName.text = currentName;
+            } 
+            else if(name == "NULL")
+            {
+                NameZone.SetActive(false);
+                currentName = name;
+            }
+            else
+            {
+                NameZone.SetActive(true);
+                currentName = name;
+                NPCName.text = name;
+            }
         }
 
 
@@ -51,6 +74,7 @@ namespace WordZone
         private void OnPlayerDie()
         {
             pieces.Clear();
+            currentName = null;
         }
 
         //添加动画效果

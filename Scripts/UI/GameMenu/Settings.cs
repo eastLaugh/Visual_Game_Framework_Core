@@ -16,6 +16,8 @@ public class Settings
     public static Language language;
     public static float fadeDuration = 0.5f;
     public static float targetAlpha = 0.5f;
+    public static Vector3 PlayerPosOffset = new Vector3(-0.1f, 0.5f);
+    public static string PlayerName = "";
 
 
     //初始化游戏设置的函数，设置语言、分辨率、全屏等参数，并且根据语言设置选择对应的本地化文本资源

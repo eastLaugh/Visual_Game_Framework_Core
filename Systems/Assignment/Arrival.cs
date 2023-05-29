@@ -12,7 +12,7 @@ namespace VGF.Assignment
         private ArrivalPlugin arrivalPlugin;
 
         //可以实现IDisposable接口，判断玩家是否到达某地
-        new public static Arrival CreateInstance(string nameOfColliderGameObject)
+        public static Arrival CreateInstance(string nameOfColliderGameObject, string name,string description)
         {
             Arrival arrival = ScriptableObject.CreateInstance<Arrival>();
             Collider2D collider = GameObject.Find(nameOfColliderGameObject).GetComponent<Collider2D>();
@@ -22,8 +22,9 @@ namespace VGF.Assignment
             collider.isTrigger = true;
             ArrivalPlugin arrivalPlugin = collider.gameObject.AddComponent<ArrivalPlugin>();
             arrivalPlugin.arrival = arrival;
-
             arrival.arrivalPlugin = arrivalPlugin;
+            arrival.Name = name;
+            arrival.Description = description;
             return arrival;
         }
 
