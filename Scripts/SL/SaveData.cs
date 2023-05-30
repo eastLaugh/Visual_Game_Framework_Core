@@ -15,5 +15,8 @@ namespace VGF.SL
         public List<InventoryItem> PlayerBagData;   //角色背包的数据
         public int ChapterIndex;                    //所处章节的序列
         public string ItemDisplayData;              //物品隐藏的数据
+        public string PlayerName;
+        public int PlayerHP;
+        public int PlayerMaxHP;
     }
 }

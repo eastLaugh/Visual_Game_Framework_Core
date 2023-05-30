@@ -40,7 +40,10 @@ public class Msg : UICollection
         gameObject1.transform.SetParent(parent.transform);
         gameObject1.transform.localPosition = new Vector3(0, 0, 0);
         gameObject1.transform.position = postion;
-        gameObject1.GetComponent<Canvas>().sortingOrder=233;
+        //gameObject1.GetComponent<Canvas>().sortingLayerName = "Word";
+        //gameObject1.GetComponent<Canvas>().sortingOrder= 100;
+        
+
     }
 
     protected override GameObject CreatePooledItem()

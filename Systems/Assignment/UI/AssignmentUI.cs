@@ -74,7 +74,7 @@ namespace VGF.Assignment
             //实例化BarUI并更新其内容
             for (int i = 0; i < assignments.Length; i++)
             {
-                if (assignments.Length > 0)
+                if (assignments[i].Display)
                 {
                   
                     var assignmentBar = Instantiate(BarPrefab, RuleItemRoot);

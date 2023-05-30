@@ -103,15 +103,10 @@ namespace VGF.Plot
         //绑定指定场景加载完后的事件，即绑定切换场景后执行的行为逻辑
         public void BindSceneEvent(string name, Action<SceneLoader.Msg> action)
         {
-            try
-            {
+
                 sceneLoader.BindSceneEvent(name, action);
 
-            }
-            catch
-            {
 
-            }
         }
 
         //方便调用前一个函数
@@ -263,16 +258,11 @@ namespace VGF.Plot
             SkillSystem.SetSkillAvailable(name, isAvaliable);
         }
         #endregion
-<<<<<<< Updated upstream
 
         #region 9.任务系统
-        protected void Arrival(string name, Action<AssignmentFinishMsg> action)
-=======
-        #region
-        protected void Arrival(string name, Action<AssignmentFinishMsg> action,string nameOfAssignment,string description)
->>>>>>> Stashed changes
+        protected void Arrival(string name, Action<AssignmentFinishMsg> action,string nameOfAssignment,string description,bool display = false)
         {
-            Arrival arrival = Assignment.Arrival.CreateInstance(name,nameOfAssignment,description);
+            Arrival arrival = Assignment.Arrival.CreateInstance(name,nameOfAssignment,description,display);
             arrival.OnAssignmentFinished += action;
             arrival.Bean();
         }
@@ -309,7 +299,7 @@ namespace VGF.Plot
         //3.把角色移动到指定的游戏对象位置（传送）
         protected void MoveTo(string GameObjectName)
         {
-            Player.instance.transform.position = GameObject.Find(GameObjectName).transform.position;
+            VGF_Player_2D.Instance.transform.position = GameObject.Find(GameObjectName).transform.position;
         }
 
 

@@ -63,6 +63,12 @@ public class EventHandler
         NewGame?.Invoke();
     }
 
+    public static event Action LoadGame;
+    public static void CallLoadGame()
+    {
+        LoadGame?.Invoke();
+    }
+
     public static event Action PlayerDie;
     public static void CallPlayerDie()
     {

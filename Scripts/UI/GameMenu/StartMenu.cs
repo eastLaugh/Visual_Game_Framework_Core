@@ -2,28 +2,28 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;  //·½±ã´¦Àí³¡¾°Ïà¹ØµÄ²Ù×÷£º¼ÓÔØ¡¢Ð¶ÔØ¡¢¹ÜÀí¡¢ÇÐ»»¡¢¼à²â
+using UnityEngine.SceneManagement;  //ï¿½ï¿½ï¿½ã´¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ØµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¡ï¿½Ð¶ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
-//×Ô¶¨ÒåVGF.SceneSystem£¬Ôö¼ÓÅäÖÃ³¡¾°µÄ¶àÖÖ¹¦ÄÜ
+//ï¿½Ô¶ï¿½ï¿½ï¿½VGF.SceneSystemï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½
 namespace VGF.SceneSystem
 {
-    //¼Ì³ÐÁËMonoBehaviour»ùÀà£¬·½±ãµ÷ÓÃ
+    //ï¿½Ì³ï¿½ï¿½ï¿½MonoBehaviourï¿½ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public class StartMenu : MonoBehaviour
     {
-        public GameObject InfoCanvas;       //´æ´¢Ò»¸öÓÎÏ·¶ÔÏó£¨Canvas£©
-        public GameObject SettingCanvas;    //´æ´¢ÉèÖÃÃæ°åCanvasÓÎÏ·¶ÔÏó
-        private Canvas MainCanvas;          //´æ´¢µ±Ç°½Å±¾Ëù¹ÒÔØµÄÓÎÏ·¶ÔÏóµÄ Canvas ×é¼þ
+        public GameObject InfoCanvas;       //ï¿½æ´¢Ò»ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½Canvasï¿½ï¿½
+        public GameObject SettingCanvas;    //ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Canvasï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
+        private Canvas MainCanvas;          //ï¿½æ´¢ï¿½ï¿½Ç°ï¿½Å±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ Canvas ï¿½ï¿½ï¿½
         public GameObject NamePanel;
 
-        //³õÊ¼»¯³¡¾°ÉèÖÃ
+        //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         public void Start()
         {
-            //»ñÈ¡µ±Ç°½Å±¾Ëù¹ÒÔØµÄÓÎÏ·¶ÔÏóµÄCanvas×é¼þ
+            //ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½Å±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½Canvasï¿½ï¿½ï¿½
             MainCanvas = GetComponent<Canvas>();
             bool flag = false;
 
-            //Ìí¼ÓPersistent SceneµÄ³¡¾°µ½µ±Ç°³¡¾°ÖÐ
+            //ï¿½ï¿½ï¿½ï¿½Persistent Sceneï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             for (int i = 0; i < SceneManager.sceneCount; i++)
             {
                 if (SceneManager.GetSceneAt(i) == SceneManager.GetSceneByName("Persistent Scene"))
@@ -32,32 +32,28 @@ namespace VGF.SceneSystem
             if (!flag) SceneManager.LoadSceneAsync("Persistent Scene", LoadSceneMode.Additive);
         }
 
-        //µã»÷"ÐÂÓÎÏ·"Ê±´¥·¢ÐÂÓÎÏ·µÄ½Å±¾
+        //ï¿½ï¿½ï¿½"ï¿½ï¿½ï¿½ï¿½Ï·"Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½Ä½Å±ï¿½
         public void BtnNewStory()
         {
-<<<<<<< Updated upstream
             SoundManager.Instance.PlaySound(Globals.Button);
-            GlobalSystem.NewGame();
-=======
-           NamePanel.SetActive(true);
->>>>>>> Stashed changes
+            NamePanel.SetActive(true);
         }
 
-        //µã»÷"ÍË³öÓÎÏ·"°´Å¥Ê±´¥·¢ÍË³ö³ÌÐòµÄ½Å±¾
+        //ï¿½ï¿½ï¿½"ï¿½Ë³ï¿½ï¿½ï¿½Ï·"ï¿½ï¿½Å¥Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½Ä½Å±ï¿½
         public void BtnExit()
         {
             SoundManager.Instance.PlaySound(Globals.Button);
             Application.Quit();
         }
 
-        //µã»÷"ÔØÈëÓÎÏ·"°´Å¥Ê±´¥·¢¼ÓÔØ³¡¾°µÄ½Å±¾
+        //ï¿½ï¿½ï¿½"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·"ï¿½ï¿½Å¥Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø³ï¿½ï¿½ï¿½ï¿½Ä½Å±ï¿½
         public void BtnLoad()
         {
             SoundManager.Instance.PlaySound(Globals.Button);
             GlobalSystem.LoadGame();
         }
 
-        //µã»÷¡°°æ±¾ÐÅÏ¢¡±°´Å¥Ê±´¥·¢ÏÔÊ¾InfoCanvas²¢Òþ²ØMainCanvasµÄ×é¼þ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Å¥Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾InfoCanvasï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MainCanvasï¿½ï¿½ï¿½ï¿½ï¿½
         public void BtnInfo()
         {
             SoundManager.Instance.PlaySound(Globals.Button);
@@ -66,7 +62,7 @@ namespace VGF.SceneSystem
             
         }
 
-        //µã»÷¡°ÓÎÏ·ÉèÖÃ¡±°´Å¥Ê±´¥·¢Ê¹ÄÜSettingCanvas²¢Òþ²ØMainCanvas
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½Ã¡ï¿½ï¿½ï¿½Å¥Ê±ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½SettingCanvasï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MainCanvas
         public void BtnSettings()
         {
             SoundManager.Instance.PlaySound(Globals.Button);

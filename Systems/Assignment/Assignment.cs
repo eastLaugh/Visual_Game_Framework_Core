@@ -19,6 +19,7 @@ namespace VGF.Assignment
         public bool Preferential { get; set; }  //表示是否是优先任务
         public string Name;
         public string Description;
+        public bool Display;
         //任务完成时触发
         public Action<AssignmentFinishMsg> OnAssignmentFinished;
         //用于完成任务

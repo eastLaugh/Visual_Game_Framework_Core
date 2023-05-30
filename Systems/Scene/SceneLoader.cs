@@ -117,6 +117,7 @@ namespace VGF.SceneSystem
             }
             else if (SceneEvent.TryGetValue(sceneName, out var existedAction))
             {
+                SceneEvent[sceneName] = action;
                 //throw new Exception("SceneLoader重复Bind");
             }
             else

@@ -48,6 +48,10 @@ namespace VGF
             saveData.PlayerBagData = InventoryManager.Instance.playerBag_SO.itemList;
             saveData.ChapterIndex = PlotManager.Instance.currentIndex;
             saveData.ItemDisplayData = Autumn.Harvest<ItemDisplayData>().Save();
+            saveData.PlayerName = Settings.PlayerName;
+            saveData.PlayerHP = DataCollection.playerHP;
+            saveData.PlayerMaxHP = DataCollection.playerMaxHP;
+
             SaveSystem.CreatSaveFile("PlayerData.Sav", saveData);
         }
 
@@ -61,6 +65,9 @@ namespace VGF
             EventHandler.CallRunChapter(saveData.ChapterIndex);
             InventoryManager.Instance.playerBag_SO.itemList = saveData.PlayerBagData;
             EventHandler.CallUpdateInventoryUI(InventoryLocation.player, saveData.PlayerBagData);
+            DataCollection.playerMaxHP = saveData.PlayerMaxHP;
+            DataCollection.playerHP = saveData.PlayerHP;
+            Settings.PlayerName = saveData.PlayerName;
         }
     }
 }
