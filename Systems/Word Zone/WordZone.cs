@@ -138,7 +138,7 @@ namespace WordZone
                 sequence.Restart();
 
                 currentPiece = pieces.Dequeue();
-                Text.text = "";
+                Text.SetText("");
                 coroutine = StartCoroutine(RenderPiece(currentPiece));
             });
             fsm.State(EState.EscapeRendering).OnEnter(() =>
@@ -147,7 +147,7 @@ namespace WordZone
                 {
                     StopCoroutine(coroutine);
                 }
-                Text.text = "";
+                Text.SetText("");
                 StartCoroutine(RenderPiece(currentPiece, true));
             });
             fsm.State(EState.WaitUser).OnEnter(() =>
@@ -217,7 +217,8 @@ namespace WordZone
         {
             if (v.Equals(int.MaxValue))
             {
-                text.text += take;
+
+                text.SetText( text.text+take);
                 yield break;
             }
 
@@ -238,7 +239,7 @@ namespace WordZone
                 }
                 //打字的声音
                 SoundManager.Instance.PlaySound(Globals.Type);
-                text.text += take[i];
+                text.SetText( text.text+take[i]);
                 if (!inXMLElement)
                 {
                     yield return Commands.halt(1f / (float)v);
